@@ -34,10 +34,21 @@
       rel="stylesheet"
     />
 
+    <script>
+      // Konfiguracja Tailwind CSS dla trybu ciemnego opartego na klasie
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+
     <style>
       body {
         font-family: "Inter", sans-serif;
-        background-color: #f9fafb; /* Delikatne tło */
+        background-color: #f9fafb; /* Delikatne tło w trybie jasnym */
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .dark body {
+        background-color: #030712; /* Ciemne tło w trybie ciemnym */
       }
       /* Style dla linków w nawigacji */
       .nav-link {
@@ -62,51 +73,57 @@
         color: #059669; /* Ciemniejszy zielony dla aktywnego linku */
         font-weight: 600;
       }
+      .dark .nav-link.active {
+        color: #34d399; /* Jaśniejszy zielony w trybie ciemnym */
+      }
     </style>
   </head>
 
-  <body class="text-gray-800">
+  <body class="text-gray-800 dark:text-gray-300">
     <!-- === HEADER I NAWIGACJA === -->
     <header
       id="header"
-      class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm"
+      class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-sm"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex-shrink-0">
-            <a href="#" class="text-2xl font-bold text-gray-900">
+            <a
+              href="#"
+              class="text-2xl font-bold text-gray-900 dark:text-white"
+            >
               <span class="text-emerald-500">Klaudia</span> Waśkiewicz
             </a>
           </div>
           <nav class="hidden md:flex items-center md:space-x-6 lg:space-x-8">
             <a
               href="#about"
-              class="nav-link text-gray-600 hover:text-emerald-600"
+              class="nav-link text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >O mnie</a
             >
             <a
               href="#offer"
-              class="nav-link text-gray-600 hover:text-emerald-600"
+              class="nav-link text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >Oferta</a
             >
             <a
               href="#pricing"
-              class="nav-link text-gray-600 hover:text-emerald-600"
+              class="nav-link text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >Cennik</a
             >
             <a
               href="#gallery"
-              class="nav-link text-gray-600 hover:text-emerald-600"
+              class="nav-link text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >Galeria</a
             >
             <a
               href="#prepare"
-              class="nav-link text-gray-600 hover:text-emerald-600"
+              class="nav-link text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >Pierwsza wizyta</a
             >
             <a
               href="#location"
-              class="nav-link text-gray-600 hover:text-emerald-600"
+              class="nav-link text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400"
               >Gdzie przyjmuję</a
             >
             <a
@@ -114,11 +131,41 @@
               class="ml-4 inline-block bg-emerald-500 text-white font-semibold py-2 px-5 rounded-lg shadow-sm hover:bg-emerald-600 transition-all duration-300 transform hover:scale-105"
               >Kontakt</a
             >
+            <!-- Przełącznik trybu ciemnego - DESKTOP -->
+            <button
+              id="theme-toggle"
+              class="ml-4 p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <i data-lucide="sun" id="theme-icon-light" class="w-5 h-5"></i>
+              <i
+                data-lucide="moon"
+                id="theme-icon-dark"
+                class="w-5 h-5 hidden"
+              ></i>
+              <span class="sr-only">Przełącz motyw</span>
+            </button>
           </nav>
-          <div class="md:hidden flex items-center">
+          <div class="md:hidden flex items-center gap-2">
+            <!-- Przełącznik trybu ciemnego - MOBILE -->
+            <button
+              id="theme-toggle-mobile"
+              class="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              <i
+                data-lucide="sun"
+                id="theme-icon-light-mobile"
+                class="w-5 h-5"
+              ></i>
+              <i
+                data-lucide="moon"
+                id="theme-icon-dark-mobile"
+                class="w-5 h-5 hidden"
+              ></i>
+              <span class="sr-only">Przełącz motyw</span>
+            </button>
             <button
               id="mobile-menu-button"
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-emerald-600 focus:outline-none"
+              class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 focus:outline-none"
             >
               <span class="sr-only">Otwórz menu</span>
               <i data-lucide="menu" id="menu-icon-open"></i>
@@ -132,37 +179,37 @@
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
             href="#about"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >O mnie</a
           >
           <a
             href="#offer"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >Oferta</a
           >
           <a
             href="#pricing"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >Cennik</a
           >
           <a
             href="#gallery"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >Galeria</a
           >
           <a
             href="#prepare"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >Pierwsza wizyta</a
           >
           <a
             href="#location"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >Gdzie przyjmuję</a
           >
           <a
             href="#contact"
-            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50"
+            class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-800"
             >Kontakt</a
           >
         </div>
@@ -173,18 +220,22 @@
       <!-- === SEKCJA HERO === -->
       <section
         id="home"
-        class="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28"
+        class="relative bg-white dark:bg-gray-900 pt-16 pb-20 lg:pt-24 lg:pb-28"
       >
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col lg:flex-row items-center gap-12">
             <div class="lg:w-1/2 text-center lg:text-left">
               <h1
-                class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight"
+                class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-tight"
               >
                 Zacznij swoją drogę <br />do
-                <span class="text-emerald-500">lepszego samopoczucia</span>
+                <span class="text-emerald-500 dark:text-emerald-400"
+                  >lepszego samopoczucia</span
+                >
               </h1>
-              <p class="mt-6 text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
+              <p
+                class="mt-6 text-lg text-gray-600 dark:text-gray-400 max-w-xl mx-auto lg:mx-0"
+              >
                 Pomogę Ci osiągnąć Twoje cele zdrowotne poprzez zbilansowaną
                 dietę i zmianę nawyków żywieniowych. Razem zbudujemy fundament
                 Twojego zdrowia.
@@ -197,7 +248,7 @@
                 >
                 <a
                   href="#offer"
-                  class="inline-block bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-200 transition-all duration-300"
+                  class="inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
                   >Zobacz ofertę</a
                 >
               </div>
@@ -215,7 +266,7 @@
       </section>
 
       <!-- === SEKCJA O MNIE === -->
-      <section id="about" class="py-20 lg:py-28 bg-white">
+      <section id="about" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             <div class="md:w-1/3 flex justify-center">
@@ -227,26 +278,30 @@
               />
             </div>
             <div class="md:w-2/3">
-              <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">
+              <h2
+                class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl mb-4"
+              >
                 Poznajmy się!
               </h2>
-              <p class="text-lg font-semibold text-emerald-600 mb-4">
+              <p
+                class="text-lg font-semibold text-emerald-600 dark:text-emerald-400 mb-4"
+              >
                 Nazywam się Klaudia Waśkiewicz i jestem dietetykiem klinicznym.
               </p>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
                 Jestem absolwentką Collegium Medicum Uniwersytetu
                 Jagiellońskiego w Krakowie. Doświadczenie zdobywałam m.in. w
                 Szpitalu Uniwersyteckim w Krakowie, w gabinetach prywatnych,
                 domach opieki oraz jako prelegentka warsztatów i wykładów dla
                 dzieci i dorosłych.
               </p>
-              <p class="text-gray-600 mb-4">
+              <p class="text-gray-600 dark:text-gray-400 mb-4">
                 Zasada, którą niezmiennie od lat się kieruję, to indywidualne
                 dostosowanie diety oraz zaleceń do sytuacji i możliwości
                 pacjenta. Zależy mi na tym, by pacjent czuł się ze swoim
                 sposobem odżywiania nie tylko zdrowo, ale i komfortowo.
               </p>
-              <p class="text-gray-600">
+              <p class="text-gray-600 dark:text-gray-400">
                 Prywatnie jestem mamą dwójki energicznych chłopców, z którymi
                 (poza wspólnym gotowaniem 🙂) aktywnie spędzam czas na
                 spacerach, rowerach i górskich wyprawach.
@@ -257,13 +312,17 @@
       </section>
 
       <!-- === SEKCJA OFERTA === -->
-      <section id="offer" class="py-20 lg:py-28">
+      <section id="offer" class="py-20 lg:py-28 bg-gray-50 dark:bg-gray-950">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
               Jak mogę Ci pomóc?
             </h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Moja oferta jest dopasowana do Twoich indywidualnych potrzeb.
               Niezależnie od tego, czy chcesz schudnąć, przytyć, czy po prostu
               jeść zdrowiej - znajdziemy rozwiązanie. Na co dzień wspieram
@@ -275,96 +334,120 @@
           >
             <!-- Karta 1 -->
             <div
-              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-500 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div class="bg-emerald-100 p-4 rounded-full mb-6">
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
+              >
                 <i
                   data-lucide="heart-pulse"
-                  class="text-emerald-600 w-8 h-8"
+                  class="text-emerald-600 dark:text-emerald-400 w-8 h-8"
                 ></i>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Choroby cywilizacyjne
               </h3>
-              <p class="text-gray-600 flex-grow">
+              <p class="text-gray-600 dark:text-gray-400 flex-grow">
                 Wsparcie dietetyczne w chorobach takich jak cukrzyca,
                 nadciśnienie, miażdżyca, dyslipidemia i dna moczanowa.
               </p>
             </div>
             <!-- Karta 2 -->
             <div
-              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-500 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div class="bg-emerald-100 p-4 rounded-full mb-6">
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
+              >
                 <i
                   data-lucide="shield-check"
-                  class="text-emerald-600 w-8 h-8"
+                  class="text-emerald-600 dark:text-emerald-400 w-8 h-8"
                 ></i>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Zaburzenia hormonalne
               </h3>
-              <p class="text-gray-600 flex-grow">
+              <p class="text-gray-600 dark:text-gray-400 flex-grow">
                 Pomoc w insulinooporności oraz zaburzeniach pracy tarczycy, w
                 tym w chorobie Hashimoto.
               </p>
             </div>
             <!-- Karta 3 -->
             <div
-              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-500 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div class="bg-emerald-100 p-4 rounded-full mb-6">
-                <i data-lucide="beaker" class="text-emerald-600 w-8 h-8"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
+              >
+                <i
+                  data-lucide="beaker"
+                  class="text-emerald-600 dark:text-emerald-400 w-8 h-8"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Problemy jelitowe
               </h3>
-              <p class="text-gray-600 flex-grow">
+              <p class="text-gray-600 dark:text-gray-400 flex-grow">
                 Dietoterapia w dolegliwościach ze strony układu pokarmowego,
                 m.in. SIBO, IBS.
               </p>
             </div>
             <!-- Karta 4 -->
             <div
-              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-500 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div class="bg-emerald-100 p-4 rounded-full mb-6">
-                <i data-lucide="ribbon" class="text-emerald-600 w-8 h-8"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
+              >
+                <i
+                  data-lucide="ribbon"
+                  class="text-emerald-600 dark:text-emerald-400 w-8 h-8"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Choroby onkologiczne
               </h3>
-              <p class="text-gray-600 flex-grow">
+              <p class="text-gray-600 dark:text-gray-400 flex-grow">
                 Indywidualne plany żywieniowe wspierające organizm w trakcie i
                 po leczeniu onkologicznym.
               </p>
             </div>
             <!-- Karta 5 -->
             <div
-              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-500 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div class="bg-emerald-100 p-4 rounded-full mb-6">
-                <i data-lucide="baby" class="text-emerald-600 w-8 h-8"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
+              >
+                <i
+                  data-lucide="baby"
+                  class="text-emerald-600 dark:text-emerald-400 w-8 h-8"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Płodność i ciąża
               </h3>
-              <p class="text-gray-600 flex-grow">
+              <p class="text-gray-600 dark:text-gray-400 flex-grow">
                 Przygotowanie organizmu do ciąży, wsparcie żywieniowe w jej
                 trakcie oraz po porodzie.
               </p>
             </div>
             <!-- Karta 6 -->
             <div
-              class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center"
+              class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-500 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div class="bg-emerald-100 p-4 rounded-full mb-6">
-                <i data-lucide="smile" class="text-emerald-600 w-8 h-8"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
+              >
+                <i
+                  data-lucide="smile"
+                  class="text-emerald-600 dark:text-emerald-400 w-8 h-8"
+                ></i>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">
+              <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Psychodietetyka pediatryczna
               </h3>
-              <p class="text-gray-600 flex-grow">
+              <p class="text-gray-600 dark:text-gray-400 flex-grow">
                 Skuteczne wspieranie najmłodszych pacjentów i ich rodziców w
                 budowaniu zdrowych relacji z jedzeniem.
               </p>
@@ -374,57 +457,95 @@
       </section>
 
       <!-- === SEKCJA CENNIK === -->
-      <section id="pricing" class="py-20 lg:py-28 bg-white">
+      <section id="pricing" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Cennik</h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
+              Cennik
+            </h2>
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Inwestycja w zdrowie to najlepsza inwestycja. Sprawdź ceny moich
               usług.
             </p>
           </div>
           <div class="mt-16 max-w-4xl mx-auto">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-              <ul class="divide-y divide-gray-200">
+            <div
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden"
+            >
+              <ul class="divide-y divide-gray-200 dark:divide-gray-700">
                 <li
-                  class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  class="p-6 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
-                  <p class="text-lg font-semibold text-gray-800">
+                  <p
+                    class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                  >
                     Pierwsza wizyta
                   </p>
-                  <p class="text-xl font-bold text-emerald-600">150 zł</p>
+                  <p
+                    class="text-xl font-bold text-emerald-600 dark:text-emerald-400"
+                  >
+                    150 zł
+                  </p>
                 </li>
                 <li
-                  class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  class="p-6 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
-                  <p class="text-lg font-semibold text-gray-800">
+                  <p
+                    class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                  >
                     Wizyta kontrolna
                   </p>
-                  <p class="text-xl font-bold text-emerald-600">90 zł</p>
+                  <p
+                    class="text-xl font-bold text-emerald-600 dark:text-emerald-400"
+                  >
+                    90 zł
+                  </p>
                 </li>
                 <li
-                  class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  class="p-6 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
-                  <p class="text-lg font-semibold text-gray-800">
+                  <p
+                    class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                  >
                     Plan żywieniowy
                   </p>
-                  <p class="text-xl font-bold text-emerald-600">150 zł</p>
+                  <p
+                    class="text-xl font-bold text-emerald-600 dark:text-emerald-400"
+                  >
+                    150 zł
+                  </p>
                 </li>
                 <li
-                  class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  class="p-6 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
-                  <p class="text-lg font-semibold text-gray-800">
+                  <p
+                    class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                  >
                     Analiza składu ciała z omówieniem
                   </p>
-                  <p class="text-xl font-bold text-emerald-600">70 zł</p>
+                  <p
+                    class="text-xl font-bold text-emerald-600 dark:text-emerald-400"
+                  >
+                    70 zł
+                  </p>
                 </li>
                 <li
-                  class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors"
+                  class="p-6 flex justify-between items-center hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
-                  <p class="text-lg font-semibold text-gray-800">
+                  <p
+                    class="text-lg font-semibold text-gray-800 dark:text-gray-200"
+                  >
                     Konsultacja online
                   </p>
-                  <p class="text-xl font-bold text-emerald-600">150 zł</p>
+                  <p
+                    class="text-xl font-bold text-emerald-600 dark:text-emerald-400"
+                  >
+                    150 zł
+                  </p>
                 </li>
               </ul>
             </div>
@@ -433,13 +554,17 @@
       </section>
 
       <!-- === SEKCJA GALERIA === -->
-      <section id="gallery" class="py-20 lg:py-28">
+      <section id="gallery" class="py-20 lg:py-28 bg-gray-50 dark:bg-gray-950">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
               Zobacz efekty i inspiracje
             </h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Zobacz smaczne potrawy, które goszczą w moich jadłospisach oraz
               kulisy prowadzonych przeze mnie warsztatów.
             </p>
@@ -512,13 +637,17 @@
       </section>
 
       <!-- === SEKCJA JAK SIĘ PRZYGOTOWAĆ === -->
-      <section id="prepare" class="py-20 lg:py-28 bg-white">
+      <section id="prepare" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
               Jak przygotować się do pierwszej wizyty?
             </h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            >
               Pierwsza wizyta u dietetyka to ważny krok w stronę lepszego
               samopoczucia i zdrowia. Aby spotkanie przebiegło sprawnie i
               przyniosło jak najwięcej korzyści, warto się do niego odpowiednio
@@ -533,17 +662,19 @@
             class="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-x-12 gap-y-10"
           >
             <div class="flex items-start gap-4">
-              <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1">
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
+              >
                 <i
                   data-lucide="clipboard-list"
-                  class="w-6 h-6 text-emerald-600"
+                  class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
                 ></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                   Zabierz ze sobą aktualne badania
                 </h3>
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-400">
                   Zabierz wyniki robione w ciągu ostatnich 3 miesięcy:
                   morfologia krwi, glukoza na czczo, profil lipidowy
                   (cholesterol), AST, ALT, kreatynina, kwas moczowy, TSH. Jeśli
@@ -554,14 +685,19 @@
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1">
-                <i data-lucide="pill" class="w-6 h-6 text-emerald-600"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
+              >
+                <i
+                  data-lucide="pill"
+                  class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
+                ></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                   Przygotuj listę przyjmowanych leków i suplementów diety
                 </h3>
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-400">
                   Zapisz ich nazwy, dawki oraz częstotliwość stosowania. Warto
                   uwzględnić także preparaty ziołowe, witaminy i produkty
                   dostępne bez recepty. Dzięki temu dietetyk sprawdzi, czy
@@ -572,14 +708,19 @@
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1">
-                <i data-lucide="book-open" class="w-6 h-6 text-emerald-600"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
+              >
+                <i
+                  data-lucide="book-open"
+                  class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
+                ></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                   Prowadź dzienniczek żywieniowy
                 </h3>
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-400">
                   Zapisz przez kilka dni, co i o której godzinie jesz i pijesz.
                   Dzięki temu dietetyk lepiej zrozumie Twoje dotychczasowe
                   nawyki.
@@ -587,14 +728,19 @@
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1">
-                <i data-lucide="goal" class="w-6 h-6 text-emerald-600"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
+              >
+                <i
+                  data-lucide="goal"
+                  class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
+                ></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
                   Zapisz swoje cele i oczekiwania
                 </h3>
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-400">
                   Zastanów się, co chcesz osiągnąć: redukcję masy ciała, poprawę
                   wyników badań, poprawę samopoczucia, czy może naukę zdrowych
                   nawyków.
@@ -602,27 +748,38 @@
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1">
-                <i data-lucide="shirt" class="w-6 h-6 text-emerald-600"></i>
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
+              >
+                <i
+                  data-lucide="shirt"
+                  class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
+                ></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold">Ubierz się wygodnie</h3>
-                <p class="text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                  Ubierz się wygodnie
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
                   Często podczas wizyty wykonywane są pomiary (waga, skład
                   ciała, pomiar obwodów), więc wygodny strój będzie praktyczny.
                 </p>
               </div>
             </div>
             <div class="flex items-start gap-4">
-              <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1">
+              <div
+                class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
+              >
                 <i
                   data-lucide="message-circle"
-                  class="w-6 h-6 text-emerald-600"
+                  class="w-6 h-6 text-emerald-600 dark:text-emerald-400"
                 ></i>
               </div>
               <div>
-                <h3 class="text-lg font-semibold">Bądź szczery i otwarty</h3>
-                <p class="text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                  Bądź szczery i otwarty
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400">
                   Im dokładniej opiszesz swoje zwyczaje i trudności, tym
                   skuteczniej dietetyk będzie mógł Ci pomóc.
                 </p>
@@ -633,13 +790,17 @@
       </section>
 
       <!-- === SEKCJA GDZIE PRZYJMUJĘ === -->
-      <section id="location" class="py-20 lg:py-28 bg-white">
+      <section id="location" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
               Zapraszam do gabinetu
             </h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Przyjmuję w dwóch dogodnych lokalizacjach. Wybierz placówkę, aby
               zobaczyć ją na mapie.
             </p>
@@ -649,46 +810,53 @@
               <!-- Lokalizacja 1 -->
               <div
                 id="location-0"
-                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-emerald-500 bg-emerald-50"
+                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30 dark:border-emerald-500"
                 data-map-src="https://www.google.com/maps/embed?origin=mfe&pb=!1m12!1m8!1m3!1d2569.7715884789213!2d19.01278!3d49.90309!3m2!1i1024!2i768!4f13.1!2m1!1s49.90309,19.01278!6i17"
               >
                 <div class="flex items-start gap-4 mb-6">
                   <div
-                    class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0"
+                    class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
                     <i
                       data-lucide="map-pin"
-                      class="text-emerald-600 w-6 h-6"
+                      class="text-emerald-600 dark:text-emerald-400 w-6 h-6"
                     ></i>
                   </div>
                   <div>
-                    <h3 class="text-xl font-bold text-gray-800">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">
                       Centrum Terapii i Edukacji
                     </h3>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-400">
                       ul. Wąska 23, Czechowice-Dziedzice
                     </p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
                   <div
-                    class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0"
+                    class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
-                    <i data-lucide="phone" class="text-emerald-600 w-6 h-6"></i>
+                    <i
+                      data-lucide="phone"
+                      class="text-emerald-600 dark:text-emerald-400 w-6 h-6"
+                    ></i>
                   </div>
                   <div>
-                    <h3 class="text-xl font-bold text-gray-800">Rejestracja</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">
+                      Rejestracja
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400">
                       tel:
-                      <a href="tel:322143000" class="hover:text-emerald-600"
+                      <a
+                        href="tel:322143000"
+                        class="hover:text-emerald-600 dark:hover:text-emerald-400"
                         >32 214 30 00</a
                       >
                     </p>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-400">
                       mail:
                       <a
                         href="mailto:rejestracja@praxe.iq.pl"
-                        class="hover:text-emerald-600"
+                        class="hover:text-emerald-600 dark:hover:text-emerald-400"
                         >rejestracja@praxe.iq.pl</a
                       >
                     </p>
@@ -699,44 +867,53 @@
               <!-- Lokalizacja 2 -->
               <div
                 id="location-1"
-                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-transparent hover:bg-gray-50"
+                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-transparent hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700"
                 data-map-src="https://maps.google.com/maps?q=49.85530706226528,18.981599611207642&z=16&output=embed"
               >
                 <div class="flex items-start gap-4 mb-6">
                   <div
-                    class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0"
+                    class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
                     <i
                       data-lucide="map-pin"
-                      class="text-emerald-600 w-6 h-6"
+                      class="text-emerald-600 dark:text-emerald-400 w-6 h-6"
                     ></i>
                   </div>
                   <div>
-                    <h3 class="text-xl font-bold text-gray-800">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">
                       Centrum Medyczne MEDEA
                     </h3>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-400">
                       ul. Starobielska 1045, Mazańcowice
                     </p>
                   </div>
                 </div>
                 <div class="flex items-start gap-4">
                   <div
-                    class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0"
+                    class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
-                    <i data-lucide="phone" class="text-emerald-600 w-6 h-6"></i>
+                    <i
+                      data-lucide="phone"
+                      class="text-emerald-600 dark:text-emerald-400 w-6 h-6"
+                    ></i>
                   </div>
                   <div>
-                    <h3 class="text-xl font-bold text-gray-800">Rejestracja</h3>
-                    <p class="text-gray-600">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white">
+                      Rejestracja
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400">
                       tel:
-                      <a href="tel:531550105" class="hover:text-emerald-600"
+                      <a
+                        href="tel:531550105"
+                        class="hover:text-emerald-600 dark:hover:text-emerald-400"
                         >531 550 105</a
                       >
                     </p>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-400">
                       lub
-                      <a href="tel:731450105" class="hover:text-emerald-600"
+                      <a
+                        href="tel:731450105"
+                        class="hover:text-emerald-600 dark:hover:text-emerald-400"
                         >731 450 105</a
                       >
                     </p>
@@ -762,13 +939,17 @@
       </section>
 
       <!-- === SEKCJA KONTAKT === -->
-      <section id="contact" class="py-20 lg:py-28">
+      <section id="contact" class="py-20 lg:py-28 bg-gray-50 dark:bg-gray-950">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
-            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+            <h2
+              class="text-3xl font-bold text-gray-900 dark:text-white sm:text-4xl"
+            >
               Masz pytania?
             </h2>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p
+              class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+            >
               Skorzystaj z formularza, aby wysłać do mnie wiadomość. Jeśli
               chcesz umówić wizytę, skontaktuj się z wybraną placówką.
             </p>
@@ -787,7 +968,7 @@
                   id="name"
                   autocomplete="name"
                   required
-                  class="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                  class="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:ring-emerald-500 focus:border-emerald-500 placeholder-gray-500 dark:placeholder-gray-400"
                   placeholder="Imię i nazwisko"
                 />
               </div>
@@ -799,7 +980,7 @@
                   id="email"
                   autocomplete="email"
                   required
-                  class="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                  class="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:ring-emerald-500 focus:border-emerald-500 placeholder-gray-500 dark:placeholder-gray-400"
                   placeholder="Twój e-mail"
                 />
               </div>
@@ -810,7 +991,7 @@
                   name="message"
                   rows="4"
                   required
-                  class="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                  class="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:ring-emerald-500 focus:border-emerald-500 placeholder-gray-500 dark:placeholder-gray-400"
                   placeholder="Twoja wiadomość..."
                 ></textarea>
               </div>
@@ -871,8 +1052,18 @@
         </button>
       </div>
     </div>
+
+    <!-- === PRZYCISK POWROTU DO GÓRY === -->
+    <button
+      id="back-to-top"
+      class="fixed bottom-5 right-5 z-50 p-3 rounded-full bg-emerald-500 text-white shadow-lg hover:bg-emerald-600 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none"
+      aria-label="Wróć na górę strony"
+    >
+      <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
     <!-- === FOOTER === -->
-    <footer class="bg-gray-800 text-white">
+    <footer class="bg-gray-800 dark:bg-black text-white dark:text-gray-400">
       <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
         <p>
           &copy; <span id="current-year"></span> Klaudia Waśkiewicz Dietetyk
@@ -885,7 +1076,57 @@
       // Inicjalizacja ikon Lucide
       lucide.createIcons();
 
-      // Skrypt do obsługi menu mobilnego
+      // --- OBSŁUGA TRYBU CIEMNEGO ---
+      const themeToggle = document.getElementById("theme-toggle");
+      const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+      const lightIcon = document.getElementById("theme-icon-light");
+      const darkIcon = document.getElementById("theme-icon-dark");
+      const lightIconMobile = document.getElementById(
+        "theme-icon-light-mobile"
+      );
+      const darkIconMobile = document.getElementById("theme-icon-dark-mobile");
+
+      const applyTheme = (theme) => {
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark");
+          lightIcon.classList.add("hidden");
+          darkIcon.classList.remove("hidden");
+          lightIconMobile.classList.add("hidden");
+          darkIconMobile.classList.remove("hidden");
+        } else {
+          document.documentElement.classList.remove("dark");
+          lightIcon.classList.remove("hidden");
+          darkIcon.classList.add("hidden");
+          lightIconMobile.classList.remove("hidden");
+          darkIconMobile.classList.add("hidden");
+        }
+      };
+
+      const toggleTheme = () => {
+        const currentTheme = localStorage.getItem("theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        localStorage.setItem("theme", newTheme);
+        applyTheme(newTheme);
+      };
+
+      // Ustaw motyw przy ładowaniu strony
+      const savedTheme = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      if (savedTheme) {
+        applyTheme(savedTheme);
+      } else if (prefersDark) {
+        applyTheme("dark");
+      } else {
+        applyTheme("light");
+      }
+
+      themeToggle.addEventListener("click", toggleTheme);
+      themeToggleMobile.addEventListener("click", toggleTheme);
+
+      // --- OBSŁUGA MENU MOBILNEGO ---
       const mobileMenuButton = document.getElementById("mobile-menu-button");
       const mobileMenu = document.getElementById("mobile-menu");
       const menuIconOpen = document.getElementById("menu-icon-open");
@@ -911,7 +1152,7 @@
       document.getElementById("current-year").textContent =
         new Date().getFullYear();
 
-      // Skrypt do obsługi galerii (lightbox)
+      // --- OBSŁUGA GALERII (LIGHTBOX) ---
       const galleryItems = document.querySelectorAll(".gallery-item");
       const modal = document.getElementById("gallery-modal");
       const modalImg = document.getElementById("modal-img");
@@ -983,7 +1224,7 @@
         });
       }
 
-      // Skrypt do obsługi interaktywnej mapy
+      // --- OBSŁUGA INTERAKTYWNEJ MAPY ---
       const locationCards = document.querySelectorAll(".location-card");
       const mapFrame = document.getElementById("map-frame");
 
@@ -994,17 +1235,39 @@
             if (mapSrc && mapFrame.src !== mapSrc) {
               mapFrame.src = mapSrc;
             }
+            // Reset stylów dla wszystkich kart
             locationCards.forEach((c) => {
-              c.classList.remove("border-emerald-500", "bg-emerald-50");
-              c.classList.add("border-transparent", "hover:bg-gray-50");
+              c.classList.remove(
+                "border-emerald-500",
+                "bg-emerald-50",
+                "dark:bg-emerald-900/30",
+                "dark:border-emerald-500"
+              );
+              c.classList.add(
+                "border-transparent",
+                "hover:bg-gray-50",
+                "dark:bg-gray-800",
+                "dark:hover:bg-gray-700"
+              );
             });
-            card.classList.add("border-emerald-500", "bg-emerald-50");
-            card.classList.remove("border-transparent", "hover:bg-gray-50");
+            // Aktywacja klikniętej karty
+            card.classList.add(
+              "border-emerald-500",
+              "bg-emerald-50",
+              "dark:bg-emerald-900/30",
+              "dark:border-emerald-500"
+            );
+            card.classList.remove(
+              "border-transparent",
+              "hover:bg-gray-50",
+              "dark:bg-gray-800",
+              "dark:hover:bg-gray-700"
+            );
           });
         });
       }
 
-      // Skrypt do podświetlania aktywnej sekcji w menu
+      // --- PODŚWIETLANIE AKTYWNEJ SEKCJI W MENU ---
       const sections = document.querySelectorAll("main section[id]");
       const navLinks = document.querySelectorAll("header nav a.nav-link");
 
@@ -1031,6 +1294,34 @@
       sections.forEach((section) => {
         observer.observe(section);
       });
+
+      // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
+      const backToTopButton = document.getElementById("back-to-top");
+
+      if (backToTopButton) {
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.remove(
+              "opacity-0",
+              "translate-y-4",
+              "pointer-events-none"
+            );
+          } else {
+            backToTopButton.classList.add(
+              "opacity-0",
+              "translate-y-4",
+              "pointer-events-none"
+            );
+          }
+        });
+
+        backToTopButton.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      }
     </script>
   </body>
 </html>
