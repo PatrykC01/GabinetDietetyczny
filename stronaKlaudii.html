@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Tytuł strony - ważny dla SEO -->
+    <title>Klaudia Waśkiewicz - Dietetyk Kliniczny | Czechowice-Dziedzice & Mazańcowice</title>
+    
+    <!-- Opis strony - ważny dla SEO -->
+    <meta name="description" content="Klaudia Waśkiewicz, dietetyk kliniczny. Indywidualne plany żywieniowe i wsparcie w chorobach metabolicznych, problemach z tarczycą i jelitami. Umów wizytę.">
+    <meta name="keywords" content="dietetyk, dietetyk kliniczny, czechowice-dziedzice, mazańcowice, psychodietetyka, plany żywieniowe, odchudzanie, zdrowe odżywianie, hashimoto, insulinooporność">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Ikony Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Czcionka Inter z Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB; /* Delikatne tło */
+        }
+        /* Style dla linków w nawigacji */
+        .nav-link {
+            position: relative;
+            transition: color .3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #10B981; /* Zielony akcent */
+            transition: width .3s ease-out;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #059669; /* Ciemniejszy zielony dla aktywnego linku */
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <!-- === HEADER I NAWIGACJA === -->
+    <header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-gray-900">
+                        <span class="text-emerald-500">Klaudia</span> Waśkiewicz
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center md:space-x-6 lg:space-x-8">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-emerald-600">O mnie</a>
+                    <a href="#offer" class="nav-link text-gray-600 hover:text-emerald-600">Oferta</a>
+                    <a href="#pricing" class="nav-link text-gray-600 hover:text-emerald-600">Cennik</a>
+                    <a href="#gallery" class="nav-link text-gray-600 hover:text-emerald-600">Galeria</a>
+                    <a href="#prepare" class="nav-link text-gray-600 hover:text-emerald-600">Pierwsza wizyta</a>
+                    <a href="#location" class="nav-link text-gray-600 hover:text-emerald-600">Gdzie przyjmuję</a>
+                    <a href="#contact" class="ml-4 inline-block bg-emerald-500 text-white font-semibold py-2 px-5 rounded-lg shadow-sm hover:bg-emerald-600 transition-all duration-300 transform hover:scale-105">Kontakt</a>
+                </nav>
+                 <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-emerald-600 focus:outline-none">
+                        <span class="sr-only">Otwórz menu</span>
+                        <i data-lucide="menu" id="menu-icon-open"></i>
+                        <i data-lucide="x" id="menu-icon-close" class="hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+         <!-- Menu mobilne -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">O mnie</a>
+                <a href="#offer" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">Oferta</a>
+                <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">Cennik</a>
+                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">Galeria</a>
+                <a href="#prepare" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">Pierwsza wizyta</a>
+                <a href="#location" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">Gdzie przyjmuję</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-emerald-600 hover:bg-emerald-50">Kontakt</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- === SEKCJA HERO === -->
+        <section id="home" class="relative bg-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                            Zacznij swoją drogę <br>do <span class="text-emerald-500">lepszego samopoczucia</span>
+                        </h1>
+                        <p class="mt-6 text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">                          
+Pomogę Ci osiągnąć Twoje cele zdrowotne poprzez zbilansowaną dietę i zmianę nawyków żywieniowych. Razem zbudujemy fundament Twojego zdrowia.
+                        </p>
+                        <div class="mt-8 flex justify-center lg:justify-start gap-4">
+                            <a href="#contact" class="inline-block bg-emerald-500 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-emerald-600 transition-all duration-300 transform hover:scale-105">Umów wizytę</a>
+                            <a href="#offer" class="inline-block bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-gray-200 transition-all duration-300">Zobacz ofertę</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 mt-10 lg:mt-0">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                             alt="Uśmiechnięta kobieta jedząca zdrową, kolorową sałatkę" 
+                             class="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/A7F3D0/1F2937?text=Błąd+ładowania+obrazu';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEKCJA O MNIE === -->
+        <section id="about" class="py-20 lg:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                    <div class="md:w-1/3 flex justify-center">
+                        <img src="portraitphoto.jfif" 
+                             alt="Profesjonalny portret dietetyczki Klaudii Waśkiewicz" 
+                             class="rounded-full shadow-lg object-cover w-64 h-64 sm:w-72 sm:h-72"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x400/E5E7EB/374151?text=Błąd+ładowania';">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl mb-4">Poznajmy się!</h2>
+                        <p class="text-lg font-semibold text-emerald-600 mb-4">Nazywam się Klaudia Waśkiewicz i jestem dietetykiem klinicznym.</p>
+                        <p class="text-gray-600 mb-4">
+                            Jestem absolwentką Collegium Medicum Uniwersytetu Jagiellońskiego w Krakowie. Doświadczenie zdobywałam m.in. w Szpitalu Uniwersyteckim w Krakowie, w gabinetach prywatnych, domach opieki oraz jako prelegentka warsztatów i wykładów dla dzieci i dorosłych.
+                        </p>
+                        <p class="text-gray-600 mb-4">
+                           Zasada, którą niezmiennie od lat się kieruję, to indywidualne dostosowanie diety oraz zaleceń do sytuacji i możliwości pacjenta. Zależy mi na tym, by pacjent czuł się ze swoim sposobem odżywiania nie tylko zdrowo, ale i komfortowo.
+                        </p>
+                        <p class="text-gray-600">
+                           Prywatnie jestem mamą dwójki energicznych chłopców, z którymi (poza wspólnym gotowaniem 🙂) aktywnie spędzam czas na spacerach, rowerach i górskich wyprawach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEKCJA OFERTA === -->
+        <section id="offer" class="py-20 lg:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Jak mogę Ci pomóc?</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                        Moja oferta jest dopasowana do Twoich indywidualnych potrzeb. Niezależnie od tego, czy chcesz schudnąć, przytyć, czy po prostu jeść zdrowiej - znajdziemy rozwiązanie. Na co dzień wspieram pacjentów w zakresie:
+                    </p>
+                </div>
+                <div class="mt-16 grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Karta 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mb-6">
+                            <i data-lucide="heart-pulse" class="text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Choroby cywilizacyjne</h3>
+                        <p class="text-gray-600 flex-grow">Wsparcie dietetyczne w chorobach takich jak cukrzyca, nadciśnienie, miażdżyca, dyslipidemia i dna moczanowa.</p>
+                    </div>
+                    <!-- Karta 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mb-6">
+                            <i data-lucide="shield-check" class="text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Zaburzenia hormonalne</h3>
+                        <p class="text-gray-600 flex-grow">Pomoc w insulinooporności oraz zaburzeniach pracy tarczycy, w tym w chorobie Hashimoto.</p>
+                    </div>
+                    <!-- Karta 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mb-6">
+                            <i data-lucide="beaker" class="text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Problemy jelitowe</h3>
+                        <p class="text-gray-600 flex-grow">Dietoterapia w dolegliwościach ze strony układu pokarmowego, m.in. SIBO, IBS.</p>
+                    </div>
+                    <!-- Karta 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mb-6">
+                            <i data-lucide="ribbon" class="text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Choroby onkologiczne</h3>
+                        <p class="text-gray-600 flex-grow">Indywidualne plany żywieniowe wspierające organizm w trakcie i po leczeniu onkologicznym.</p>
+                    </div>
+                    <!-- Karta 5 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mb-6">
+                            <i data-lucide="baby" class="text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Płodność i ciąża</h3>
+                        <p class="text-gray-600 flex-grow">Przygotowanie organizmu do ciąży, wsparcie żywieniowe w jej trakcie oraz po porodzie.</p>
+                    </div>
+                    <!-- Karta 6 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center text-center">
+                        <div class="bg-emerald-100 p-4 rounded-full mb-6">
+                            <i data-lucide="smile" class="text-emerald-600 w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Psychodietetyka pediatryczna</h3>
+                        <p class="text-gray-600 flex-grow">Skuteczne wspieranie najmłodszych pacjentów i ich rodziców w budowaniu zdrowych relacji z jedzeniem.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- === SEKCJA CENNIK === -->
+        <section id="pricing" class="py-20 lg:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Cennik</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Inwestycja w zdrowie to najlepsza inwestycja. Sprawdź ceny moich usług.</p>
+                </div>
+                <div class="mt-16 max-w-4xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                        <ul class="divide-y divide-gray-200">
+                            <li class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                                <p class="text-lg font-semibold text-gray-800">Pierwsza wizyta</p>
+                                <p class="text-xl font-bold text-emerald-600">150 zł</p>
+                            </li>
+                            <li class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                                <p class="text-lg font-semibold text-gray-800">Wizyta kontrolna</p>
+                                <p class="text-xl font-bold text-emerald-600">90 zł</p>
+                            </li>
+                             <li class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                                <p class="text-lg font-semibold text-gray-800">Plan żywieniowy</p>
+                                <p class="text-xl font-bold text-emerald-600">150 zł</p>
+                            </li>
+                            <li class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                                <p class="text-lg font-semibold text-gray-800">Analiza składu ciała z omówieniem</p>
+                                <p class="text-xl font-bold text-emerald-600">70 zł</p>
+                            </li>
+                            <li class="p-6 flex justify-between items-center hover:bg-gray-50 transition-colors">
+                                <p class="text-lg font-semibold text-gray-800">Konsultacja online</p>
+                                <p class="text-xl font-bold text-emerald-600">150 zł</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- === SEKCJA GALERIA === -->
+      <section id="gallery" class="py-20 lg:py-28">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+              Zobacz efekty i inspiracje
+            </h2>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Zobacz smaczne potrawy, które goszczą w moich jadłospisach oraz
+              kulisy prowadzonych przeze mnie warsztatów.
+            </p>
+          </div>
+          <div
+            class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Zdjęcie 1 -->
+            <div
+              class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src="photo (1).jfif"
+                alt="Kolorowa sałatka ze świeżych warzyw"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <!-- Zdjęcie 2 -->
+            <div
+              class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src="photo (2).jfif"
+                alt="Zdrowe smoothie bowl z owocami"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <!-- Zdjęcie 3 -->
+            <div
+              class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src="photo (3).jfif"
+                alt="Uczestnicy warsztatów kulinarnych"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <!-- Zdjęcie 4 -->
+            <div
+              class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src="photo (6).jfif"
+                alt="Przygotowane posiłki w pojemnikach (meal prep)"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <!-- Zdjęcie 5 -->
+            <div
+              class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=1587&auto=format&fit=crop"
+                alt="Elegancko podany łosoś z warzywami"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <!-- Zdjęcie 6 -->
+            <div
+              class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
+            >
+              <img
+                src="https://media.istockphoto.com/id/1321112364/photo/female-nutritionist-with-laptop-gives-consultation-to-patient-indoors-in-the-office.webp?a=1&b=1&s=612x612&w=0&k=20&c=PYIfHHHS_VL_FWUVSmeCVwL9daETuKtBAEV6opZ4cVY="
+                alt="Dietetyk podczas konsultacji z pacjentem"
+                class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- === SEKCJA JAK SIĘ PRZYGOTOWAĆ === -->
+        <section id="prepare" class="py-20 lg:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Jak przygotować się do pierwszej wizyty?</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+                        Pierwsza wizyta u dietetyka to ważny krok w stronę lepszego samopoczucia i zdrowia. Aby spotkanie przebiegło sprawnie i przyniosło jak najwięcej korzyści, warto się do niego odpowiednio przygotować. Już na samym początku dietetyk będzie chciał Cię lepiej poznać – zrozumieć Twoje potrzeby, dotychczasowe nawyki żywieniowe, stan zdrowia i oczekiwania wobec współpracy. Dzięki temu możliwe będzie stworzenie indywidualnego planu dopasowanego do Twoich celów i codziennego trybu życia.
+                    </p>
+                </div>
+                <div class="mt-16 max-w-4xl mx-auto grid md:grid-cols-2 gap-x-12 gap-y-10">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1"><i data-lucide="clipboard-list" class="w-6 h-6 text-emerald-600"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Zabierz ze sobą aktualne badania</h3>
+                            <p class="text-gray-600">Zabierz wyniki robione w ciągu ostatnich 3 miesięcy: morfologia krwi, glukoza na czczo, profil lipidowy (cholesterol), AST, ALT, kreatynina, kwas moczowy, TSH. 
+Jeśli nie jesteś pewien, jakie badania wykonać dodatkowo w Twoim przypadku, oczywiście porozmawiamy o tym w trakcie naszej wizyty.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1"><i data-lucide="pill" class="w-6 h-6 text-emerald-600"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Przygotuj listę przyjmowanych leków i suplementów diety</h3>
+                            <p class="text-gray-600">Zapisz ich nazwy, dawki oraz częstotliwość stosowania. Warto uwzględnić także preparaty ziołowe, witaminy i produkty dostępne bez recepty. Dzięki temu dietetyk sprawdzi, czy wybrane składniki odżywcze nie wchodzą w interakcje z lekami i czy Twoja suplementacja jest odpowiednio dopasowana do potrzeb organizmu.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1"><i data-lucide="book-open" class="w-6 h-6 text-emerald-600"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Prowadź dzienniczek żywieniowy</h3>
+                            <p class="text-gray-600">Zapisz przez kilka dni, co i o której godzinie jesz i pijesz. Dzięki temu dietetyk lepiej zrozumie Twoje dotychczasowe nawyki.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1"><i data-lucide="goal" class="w-6 h-6 text-emerald-600"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Zapisz swoje cele i oczekiwania</h3>
+                            <p class="text-gray-600">Zastanów się, co chcesz osiągnąć: redukcję masy ciała, poprawę wyników badań, poprawę samopoczucia, czy może naukę zdrowych nawyków.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1"><i data-lucide="shirt" class="w-6 h-6 text-emerald-600"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Ubierz się wygodnie</h3>
+                            <p class="text-gray-600">Często podczas wizyty wykonywane są pomiary (waga, skład ciała, pomiar obwodów), więc wygodny strój będzie praktyczny.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-full flex-shrink-0 mt-1"><i data-lucide="message-circle" class="w-6 h-6 text-emerald-600"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold">Bądź szczery i otwarty</h3>
+                            <p class="text-gray-600">Im dokładniej opiszesz swoje zwyczaje i trudności, tym skuteczniej dietetyk będzie mógł Ci pomóc.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEKCJA GDZIE PRZYJMUJĘ === -->
+        <section id="location" class="py-20 lg:py-28 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Zapraszam do gabinetu</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                        Przyjmuję w dwóch dogodnych lokalizacjach. Wybierz placówkę, aby zobaczyć ją na mapie.
+                    </p>
+                </div>
+                <div class="mt-16 max-w-5xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Lokalizacja 1 -->
+                        <div id="location-0" class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-emerald-500 bg-emerald-50" 
+                             data-map-src="https://maps.google.com/maps?q=Centrum%20Terapii%20i%20Edukacji%2C%20ul.%20W%C4%85ska%2023%2C%20Czechowice-Dziedzice&t=&z=16&ie=UTF8&iwloc=&output=embed">
+                          <div class="flex items-start gap-4 mb-6">
+                            <div class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0">
+                              <i data-lucide="map-pin" class="text-emerald-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                              <h3 class="text-xl font-bold text-gray-800">
+                                Centrum Terapii i Edukacji
+                              </h3>
+                              <p class="text-gray-600">ul. Wąska 23, Czechowice-Dziedzice</p>
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-4">
+                            <div class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0">
+                              <i data-lucide="phone" class="text-emerald-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                              <h3 class="text-xl font-bold text-gray-800">Rejestracja</h3>
+                              <p class="text-gray-600">tel: <a href="tel:322143000" class="hover:text-emerald-600">32 214 30 00</a></p>
+                              <p class="text-gray-600">
+                                mail:
+                                <a
+                                  href="mailto:rejestracja@praxe.iq.pl"
+                                  class="hover:text-emerald-600"
+                                  >rejestracja@praxe.iq.pl</a
+                                >
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Lokalizacja 2 -->
+                        <div id="location-1" class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-transparent hover:bg-gray-50"
+                             data-map-src="https://maps.google.com/maps?q=Centrum%20Medyczne%20MEDEA%2C%20ul.%20Starobielska%201045%2C%20Maza%C5%84cowice&t=&z=16&ie=UTF8&iwloc=&output=embed">
+                          <div class="flex items-start gap-4 mb-6">
+                            <div class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0">
+                              <i data-lucide="map-pin" class="text-emerald-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                              <h3 class="text-xl font-bold text-gray-800">
+                                Centrum Medyczne MEDEA
+                              </h3>
+                              <p class="text-gray-600">ul. Starobielska 1045, Mazańcowice</p>
+                            </div>
+                          </div>
+                          <div class="flex items-start gap-4">
+                            <div class="bg-emerald-100 p-3 rounded-full mt-1 flex-shrink-0">
+                              <i data-lucide="phone" class="text-emerald-600 w-6 h-6"></i>
+                            </div>
+                            <div>
+                              <h3 class="text-xl font-bold text-gray-800">Rejestracja</h3>
+                              <p class="text-gray-600">tel: <a href="tel:531550105" class="hover:text-emerald-600">531 550 105</a></p>
+                              <p class="text-gray-600">lub <a href="tel:731450105" class="hover:text-emerald-600">731 450 105</a></p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                     <!-- Map Container -->
+                    <div class="mt-10 rounded-2xl overflow-hidden shadow-lg h-96">
+                        <iframe
+                            id="map-frame"
+                            src="https://maps.google.com/maps?q=Centrum%20Terapii%20i%20Edukacji%2C%20ul.%20W%C4%85ska%2023%2C%20Czechowice-Dziedzice&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SEKCJA KONTAKT === -->
+        <section id="contact" class="py-20 lg:py-28">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Masz pytania?</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                        Skorzystaj z formularza, aby wysłać do mnie wiadomość. Jeśli chcesz umówić wizytę, skontaktuj się z wybraną placówką.
+                    </p>
+                </div>
+                <div class="mt-16 max-w-lg mx-auto">
+                     <form
+                      action="https://staging.formspree.io/f/egrlvvdr"
+                      method="POST"
+                      class="space-y-6"
+                    >
+                      <div>
+                        <label for="name" class="sr-only">Imię i nazwisko</label>
+                        <input
+                          type="text"
+                          name="name"
+                          id="name"
+                          autocomplete="name"
+                          required
+                          class="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                          placeholder="Imię i nazwisko"
+                        />
+                      </div>
+                      <div>
+                        <label for="email" class="sr-only">Twój e-mail</label>
+                        <input
+                          type="email"
+                          name="_replyto"
+                          id="email"
+                          autocomplete="email"
+                          required
+                          class="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                          placeholder="Twój e-mail"
+                        />
+                      </div>
+                      <div>
+                        <label for="message" class="sr-only">Wiadomość</label>
+                        <textarea
+                          id="message"
+                          name="message"
+                          rows="4"
+                          required
+                          class="block w-full px-4 py-3 rounded-lg border-gray-300 shadow-sm focus:ring-emerald-500 focus:border-emerald-500"
+                          placeholder="Twoja wiadomość..."
+                        ></textarea>
+                      </div>
+                      <div>
+                        <button
+                          type="submit"
+                          class="w-full flex justify-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-base font-medium text-white bg-emerald-500 hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-colors"
+                        >
+                          Wyślij wiadomość
+                        </button>
+                      </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- === MODAL GALERII (LIGHTBOX) === -->
+    <div
+      id="gallery-modal"
+      class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 hidden p-4 transition-opacity duration-300"
+    >
+      <div
+        class="relative max-w-4xl max-h-full w-full flex items-center justify-center"
+      >
+        <!-- Przycisk Poprzedni -->
+        <button
+          id="modal-prev"
+          class="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50 transition-colors ml-2 md:ml-4"
+        >
+          <i data-lucide="chevron-left" class="w-8 h-8"></i>
+          <span class="sr-only">Poprzednie zdjęcie</span>
+        </button>
+
+        <!-- Wrapper for image and close button -->
+        <div class="relative">
+          <img
+            id="modal-img"
+            src=""
+            alt="Powiększone zdjęcie z galerii"
+            class="rounded-lg shadow-2xl max-w-full max-h-[90vh] object-contain"
+          />
+          <button
+            id="modal-close"
+            class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-colors z-20"
+          >
+            <i data-lucide="x" class="w-8 h-8"></i>
+            <span class="sr-only">Zamknij</span>
+          </button>
+        </div>
+
+        <!-- Przycisk Następny -->
+        <button
+          id="modal-next"
+          class="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50 transition-colors mr-2 md:mr-4"
+        >
+          <i data-lucide="chevron-right" class="w-8 h-8"></i>
+          <span class="sr-only">Następne zdjęcie</span>
+        </button>
+      </div>
+    </div>
+    <!-- === FOOTER === -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; <span id="current-year"></span> Klaudia Waśkiewicz Dietetyk Kliniczny. Wszelkie prawa zastrzeżone.</p>
+            <p class="text-sm text-gray-400 mt-2">Projekt i wykonanie strony: Gemini</p>
+        </div>
+    </footer>
+
+    <script>
+      // Inicjalizacja ikon Lucide
+      lucide.createIcons();
+
+      // Skrypt do obsługi menu mobilnego
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIconOpen = document.getElementById("menu-icon-open");
+      const menuIconClose = document.getElementById("menu-icon-close");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIconOpen.classList.toggle("hidden");
+        menuIconClose.classList.toggle("hidden");
+      });
+
+      // Zamykanie menu mobilnego po kliknięciu w link
+      const mobileNavLinks = document.querySelectorAll("#mobile-menu a");
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuIconOpen.classList.remove("hidden");
+          menuIconClose.classList.add("hidden");
+        });
+      });
+
+      // Automatyczne ustawienie aktualnego roku w stopce
+      document.getElementById("current-year").textContent = new Date().getFullYear();
+
+      // Skrypt do obsługi galerii (lightbox)
+      const galleryItems = document.querySelectorAll(".gallery-item");
+      const modal = document.getElementById("gallery-modal");
+      const modalImg = document.getElementById("modal-img");
+      const modalClose = document.getElementById("modal-close");
+      const modalPrev = document.getElementById("modal-prev");
+      const modalNext = document.getElementById("modal-next");
+      let currentIndex = 0;
+
+      if (galleryItems.length > 0 && modal && modalImg && modalClose && modalPrev && modalNext) {
+        const showImage = (index) => {
+          const imgSrc = galleryItems[index].querySelector("img").src;
+          modalImg.src = imgSrc;
+          currentIndex = index;
+        };
+
+        galleryItems.forEach((item, index) => {
+          item.addEventListener("click", () => {
+            showImage(index);
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden"; // Zapobiega przewijaniu tła
+          });
+        });
+
+        const closeModal = () => {
+          modal.classList.add("hidden");
+          document.body.style.overflow = "auto"; // Przywraca przewijanie
+        };
+
+        const showPrevImage = () => {
+          const newIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+          showImage(newIndex);
+        };
+
+        const showNextImage = () => {
+          const newIndex = (currentIndex + 1) % galleryItems.length;
+          showImage(newIndex);
+        };
+
+        modalClose.addEventListener("click", closeModal);
+        modalPrev.addEventListener("click", showPrevImage);
+        modalNext.addEventListener("click", showNextImage);
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (!modal.classList.contains("hidden")) {
+            if (e.key === "Escape") {
+              closeModal();
+            }
+            if (e.key === "ArrowLeft") {
+              showPrevImage();
+            }
+            if (e.key === "ArrowRight") {
+              showNextImage();
+            }
+          }
+        });
+      }
+
+      // Skrypt do obsługi interaktywnej mapy
+      const locationCards = document.querySelectorAll('.location-card');
+      const mapFrame = document.getElementById('map-frame');
+
+      if (locationCards.length > 0 && mapFrame) {
+          locationCards.forEach(card => {
+              card.addEventListener('click', () => {
+                  const mapSrc = card.dataset.mapSrc;
+                  if (mapSrc && mapFrame.src !== mapSrc) {
+                      mapFrame.src = mapSrc;
+                  }
+                  locationCards.forEach(c => {
+                      c.classList.remove('border-emerald-500', 'bg-emerald-50');
+                      c.classList.add('border-transparent', 'hover:bg-gray-50');
+                  });
+                  card.classList.add('border-emerald-500', 'bg-emerald-50');
+                  card.classList.remove('border-transparent', 'hover:bg-gray-50');
+              });
+          });
+      }
+
+      // Skrypt do podświetlania aktywnej sekcji w menu
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('header nav a.nav-link');
+
+      const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.4
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  const id = entry.target.getAttribute('id');
+                  navLinks.forEach(link => {
+                      link.classList.remove('active');
+                      if (link.getAttribute('href') === `#${id}`) {
+                          link.classList.add('active');
+                      }
+                  });
+              }
+          });
+      }, observerOptions);
+
+      sections.forEach(section => {
+          observer.observe(section);
+      });
+    </script>
+</body>
+</html>
+
