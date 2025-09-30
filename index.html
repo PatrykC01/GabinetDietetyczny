@@ -249,16 +249,25 @@
             </div>
             <div class="lg:w-1/2 mt-10 lg:mt-0">
               <!-- Zoptymalizowany obraz Hero -->
-              <img
-                src="Images/herophoto.webp"
-                sizes="(max-width: 1023px) 90vw, 45vw"
-                alt="Kolorowa miska zdrowia (Buddha bowl) pełna świeżych warzyw, awokado, ciecierzycy i batatów - przykład diety roślinnej."
-                class="rounded-2xl shadow-2xl w-full h-auto object-cover"
-                width="1200"
-                height="800"
-                decoding="async"
-                fetchpriority="high"
-              />
+              <picture>
+                  <source 
+                      media="(max-width: 640px)" 
+                      srcset="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=600&auto=format&fit=crop"
+                  >
+                  <source 
+                      media="(max-width: 1023px)" 
+                      srcset="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop"
+                  >
+                  <img
+                    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop"
+                    alt="Kolorowa miska zdrowia (Buddha bowl) pełna świeżych warzyw, awokado, ciecierzycy i batatów - przykład diety roślinnej."
+                    class="rounded-2xl shadow-2xl w-full h-auto object-cover"
+                    width="1200"
+                    height="800"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+              </picture>
             </div>
           </div>
         </div>
