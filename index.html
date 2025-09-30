@@ -590,11 +590,12 @@
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               <img
-                src="Images/photo (1).webp"
+                src="Images/thumbnails/photo-1-thumb.webp"  
+                data-large-src="Images/large/photo-1-large.webp"
                 alt="Dietetyczka prowadzi prezentację na temat zdrowego odżywiania i suplementacji podczas wykładu o witaminie D."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="800"
-                height="533"
+                width="400"
+                height="267"
                 loading="lazy"
                 decoding="async"
               />
@@ -604,11 +605,12 @@
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               <img
-                src="Images/photo (2).webp"
+                src="Images/thumbnails/photo-2-thumb.webp"  
+                data-large-src="Images/large/photo-2-large.webp"
                 alt="Dietetyk prowadzi warsztaty o zdrowym żywieniu dla grupy dzieci w przedszkolu."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="800"
-                height="534"
+                width="400"
+                height="267"
                 loading="lazy"
                 decoding="async"
               />
@@ -618,11 +620,12 @@
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               <img
-                src="Images/photo (3).webp"
+                src="Images/thumbnails/photo-4-thumb.webp"  
+                data-large-src="Images/large/photo-4-large.webp"
                 alt="Dietetyczne placuszki na słodkie śniadanie, podane ze świeżymi borówkami i truskawkami."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="800"
-                height="978"
+                width="400"
+                height="267"
                 loading="lazy"
                 decoding="async"
               />
@@ -632,11 +635,12 @@
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
               <img
-                src="Images/photo (6).webp"
+                src="Images/thumbnails/photo-3-thumb.webp"  
+                data-large-src="Images/large/photo-3-large.webp"
                 alt="Zdrowy i zbilansowany posiłek: wegetariańskie kotleciki z marchewką, pomidorkami i świeżą kolendrą na białym talerzu."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="800"
-                height="1200"
+                width="400"
+                height="267"
                 loading="lazy"
                 decoding="async"
               />
@@ -655,8 +659,8 @@
                 sizes="(max-width: 639px) 90vw, (max-width: 1023px) 45vw, 30vw"
                 alt=""
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="800"
-                height="1200"
+                width="400"
+                height="267"
                 loading="lazy"
                 decoding="async"
               />
@@ -669,8 +673,8 @@
                 src="https://media.istockphoto.com/id/1321112364/photo/female-nutritionist-with-laptop-gives-consultation-to-patient-indoors-in-the-office.webp?a=1&b=1&s=612x612&w=0&k=20&c=PYIfHHHS_VL_FWUVSmeCVwL9daETuKtBAEV6opZ4cVY="
                 alt=""
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="800"
-                height="533"
+                width="400"
+                height="267"
                 loading="lazy"
                 decoding="async"
               />
@@ -1227,10 +1231,11 @@
             let currentIndex = 0;
 
             const showImage = (index) => {
-                const imgElement = galleryItems[index].querySelector("img");
-                modalImg.src = imgElement.src;
-                currentIndex = index;
-            };
+    const imgElement = galleryItems[index].querySelector("img");
+    const largeImageSrc = imgElement.dataset.largeSrc || imgElement.src;
+    modalImg.src = largeImageSrc; 
+    currentIndex = index;
+};
 
             galleryItems.forEach((item, index) => {
                 item.addEventListener("click", () => {
