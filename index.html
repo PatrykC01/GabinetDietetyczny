@@ -41,6 +41,9 @@
         background-color: #f9fafb; /* Delikatne tło w trybie jasnym */
         transition: background-color 0.3s, color 0.3s;
       }
+      h1 {
+    font-size: 2em; /* lub inna konkretna wartość */
+  }
       .dark body {
         background-color: #030712; /* Ciemne tło w trybie ciemnym */
       }
@@ -1289,21 +1292,27 @@
         const sections = document.querySelectorAll("main section[id]");
         const navLinks = document.querySelectorAll("header nav a.nav-link");
         if(sections.length > 0 && navLinks.length > 0) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const id = entry.target.getAttribute("id");
-                        navLinks.forEach((link) => {
-                            link.classList.remove("active");
-                            if (link.getAttribute("href") === `#${id}`) {
-                                link.classList.add("active");
-                            }
-                        });
+    const observerOptions = {
+      rootMargin: "0px 0px -55% 0px", // Aktywacja w górnej części ekranu
+      threshold: 0.2 // Wystarczy, że mały fragment sekcji jest widoczny w strefie
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute("id");
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === `#${id}`) {
+                        link.classList.add("active");
                     }
                 });
-            }, { rootMargin: "0px", threshold: 0.4 });
-            sections.forEach(section => observer.observe(section));
-        }
+            }
+        });
+    }, observerOptions); // Użycie nowej, bardziej precyzyjnej konfiguracji
+
+    sections.forEach(section => observer.observe(section));
+}
         
         // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
         const backToTopButton = document.getElementById("back-to-top");
