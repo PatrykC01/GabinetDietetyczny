@@ -20,27 +20,21 @@
       content="dietetyk, dietetyk kliniczny, czechowice-dziedzice, mazańcowice, psychodietetyka, plany żywieniowe, odchudzanie, zdrowe odżywianie, hashimoto, insulinooporność"
     />
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Ikony Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <!-- Czcionka Inter z Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
+      media="print" 
+      onload="this.media='all'"
     />
 
-    <script>
-      // Konfiguracja Tailwind CSS dla trybu ciemnego opartego na klasie
-      tailwind.config = {
-        darkMode: "class",
-      };
-    </script>
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+    </noscript>
 
+  
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -260,9 +254,10 @@
                 sizes="(max-width: 1023px) 90vw, 45vw"
                 alt="Kolorowa miska zdrowia (Buddha bowl) pełna świeżych warzyw, awokado, ciecierzycy i batatów - przykład diety roślinnej."
                 class="rounded-2xl shadow-2xl w-full h-auto object-cover"
-                width="1740"
-                height="1160"
+                width="1200"
+                height="800"
                 decoding="async"
+                fetchpriority="high"
               />
             </div>
           </div>
@@ -589,8 +584,8 @@
                 src="Images/photo (1).webp"
                 alt="Dietetyczka prowadzi prezentację na temat zdrowego odżywiania i suplementacji podczas wykładu o witaminie D."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="1626"
-                height="1093"
+                width="800"
+                height="533"
                 loading="lazy"
                 decoding="async"
               />
@@ -603,8 +598,8 @@
                 src="Images/photo (2).webp"
                 alt="Dietetyk prowadzi warsztaty o zdrowym żywieniu dla grupy dzieci w przedszkolu."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="563"
-                height="379"
+                width="800"
+                height="534"
                 loading="lazy"
                 decoding="async"
               />
@@ -617,8 +612,8 @@
                 src="Images/photo (3).webp"
                 alt="Dietetyczne placuszki na słodkie śniadanie, podane ze świeżymi borówkami i truskawkami."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="725"
-                height="489"
+                width="800"
+                height="978"
                 loading="lazy"
                 decoding="async"
               />
@@ -631,8 +626,8 @@
                 src="Images/photo (6).webp"
                 alt="Zdrowy i zbilansowany posiłek: wegetariańskie kotleciki z marchewką, pomidorkami i świeżą kolendrą na białym talerzu."
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="2048"
-                height="1380"
+                width="800"
+                height="1200"
                 loading="lazy"
                 decoding="async"
               />
@@ -651,8 +646,8 @@
                 sizes="(max-width: 639px) 90vw, (max-width: 1023px) 45vw, 30vw"
                 alt=""
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="1587"
-                height="2380"
+                width="800"
+                height="1200"
                 loading="lazy"
                 decoding="async"
               />
@@ -665,8 +660,8 @@
                 src="https://media.istockphoto.com/id/1321112364/photo/female-nutritionist-with-laptop-gives-consultation-to-patient-indoors-in-the-office.webp?a=1&b=1&s=612x612&w=0&k=20&c=PYIfHHHS_VL_FWUVSmeCVwL9daETuKtBAEV6opZ4cVY="
                 alt=""
                 class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-                width="612"
-                height="408"
+                width="800"
+                height="533"
                 loading="lazy"
                 decoding="async"
               />
@@ -1112,264 +1107,206 @@
       </div>
     </footer>
 
+ <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Ikony Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+     <script>
+      // Konfiguracja Tailwind CSS dla trybu ciemnego opartego na klasie
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+
     <script>
-      // Inicjalizacja ikon Lucide
-      lucide.createIcons();
-
-      // --- OBSŁUGA TRYBU CIEMNEGO ---
-      const themeToggle = document.getElementById("theme-toggle");
-      const themeToggleMobile = document.getElementById("theme-toggle-mobile");
-      const lightIcon = document.getElementById("theme-icon-light");
-      const darkIcon = document.getElementById("theme-icon-dark");
-      const lightIconMobile = document.getElementById(
-        "theme-icon-light-mobile"
-      );
-      const darkIconMobile = document.getElementById("theme-icon-dark-mobile");
-
-      const applyTheme = (theme) => {
-        if (theme === "dark") {
-          document.documentElement.classList.add("dark");
-          lightIcon.classList.add("hidden");
-          darkIcon.classList.remove("hidden");
-          lightIconMobile.classList.add("hidden");
-          darkIconMobile.classList.remove("hidden");
-        } else {
-          document.documentElement.classList.remove("dark");
-          lightIcon.classList.remove("hidden");
-          darkIcon.classList.add("hidden");
-          lightIconMobile.classList.remove("hidden");
-          darkIconMobile.classList.add("hidden");
+    // Cały kod JS opakowany w DOMContentLoaded, aby upewnić się, że strona jest gotowa
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Inicjalizacja ikon Lucide ---
+        // Upewniamy się, że obiekt 'lucide' jest dostępny
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
-      };
 
-      const toggleTheme = () => {
-        const currentTheme = localStorage.getItem("theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
-        localStorage.setItem("theme", newTheme);
-        applyTheme(newTheme);
-      };
+        // --- OBSŁUGA TRYBU CIEMNEGO ---
+        const themeToggle = document.getElementById("theme-toggle");
+        const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+        
+        // Sprawdzamy, czy elementy istnieją, zanim dodamy event listenery
+        if (themeToggle && themeToggleMobile) {
+            const lightIcon = document.getElementById("theme-icon-light");
+            const darkIcon = document.getElementById("theme-icon-dark");
+            const lightIconMobile = document.getElementById("theme-icon-light-mobile");
+            const darkIconMobile = document.getElementById("theme-icon-dark-mobile");
 
-      // Ustaw motyw przy ładowaniu strony
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
+            const applyTheme = (theme) => {
+                if (theme === "dark") {
+                    document.documentElement.classList.add("dark");
+                    lightIcon.classList.add("hidden");
+                    darkIcon.classList.remove("hidden");
+                    lightIconMobile.classList.add("hidden");
+                    darkIconMobile.classList.remove("hidden");
+                } else {
+                    document.documentElement.classList.remove("dark");
+                    lightIcon.classList.remove("hidden");
+                    darkIcon.classList.add("hidden");
+                    lightIconMobile.classList.remove("hidden");
+                    darkIconMobile.classList.add("hidden");
+                }
+            };
 
-      if (savedTheme) {
-        applyTheme(savedTheme);
-      } else if (prefersDark) {
-        applyTheme("dark");
-      } else {
-        applyTheme("light");
-      }
+            const toggleTheme = () => {
+                const newTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+                localStorage.setItem("theme", newTheme);
+                applyTheme(newTheme);
+            };
 
-      themeToggle.addEventListener("click", toggleTheme);
-      themeToggleMobile.addEventListener("click", toggleTheme);
+            // Ustaw motyw przy ładowaniu strony
+            const savedTheme = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      // --- OBSŁUGA MENU MOBILNEGO ---
-      const mobileMenuButton = document.getElementById("mobile-menu-button");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const menuIconOpen = document.getElementById("menu-icon-open");
-      const menuIconClose = document.getElementById("menu-icon-close");
-
-      mobileMenuButton.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        menuIconOpen.classList.toggle("hidden");
-        menuIconClose.classList.toggle("hidden");
-      });
-
-      // Zamykanie menu mobilnego po kliknięciu w link
-      const mobileNavLinks = document.querySelectorAll("#mobile-menu a");
-      mobileNavLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-          menuIconOpen.classList.remove("hidden");
-          menuIconClose.classList.add("hidden");
-        });
-      });
-
-      // Automatyczne ustawienie aktualnego roku w stopce
-      document.getElementById("current-year").textContent =
-        new Date().getFullYear();
-
-      // --- OBSŁUGA GALERII (LIGHTBOX) ---
-      const galleryItems = document.querySelectorAll(".gallery-item");
-      const modal = document.getElementById("gallery-modal");
-      const modalImg = document.getElementById("modal-img");
-      const modalClose = document.getElementById("modal-close");
-      const modalPrev = document.getElementById("modal-prev");
-      const modalNext = document.getElementById("modal-next");
-      let currentIndex = 0;
-
-      if (
-        galleryItems.length > 0 &&
-        modal &&
-        modalImg &&
-        modalClose &&
-        modalPrev &&
-        modalNext
-      ) {
-        const showImage = (index) => {
-          const imgElement = galleryItems[index].querySelector("img");
-          modalImg.src = imgElement.src;
-          // Jeśli obraz ma srcset, użyj go do znalezienia najlepszego źródła dla modala
-          if (imgElement.srcset) {
-            modalImg.srcset = imgElement.srcset;
-            modalImg.sizes = "80vw"; // Modal zajmuje większość ekranu
-          } else {
-            modalImg.srcset = "";
-            modalImg.sizes = "";
-          }
-          currentIndex = index;
-        };
-
-        galleryItems.forEach((item, index) => {
-          item.addEventListener("click", () => {
-            showImage(index);
-            modal.classList.remove("hidden");
-            document.body.style.overflow = "hidden"; // Zapobiega przewijaniu tła
-          });
-        });
-
-        const closeModal = () => {
-          modal.classList.add("hidden");
-          document.body.style.overflow = "auto"; // Przywraca przewijanie
-        };
-
-        const showPrevImage = () => {
-          const newIndex =
-            (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-          showImage(newIndex);
-        };
-
-        const showNextImage = () => {
-          const newIndex = (currentIndex + 1) % galleryItems.length;
-          showImage(newIndex);
-        };
-
-        modalClose.addEventListener("click", closeModal);
-        modalPrev.addEventListener("click", showPrevImage);
-        modalNext.addEventListener("click", showNextImage);
-
-        modal.addEventListener("click", (e) => {
-          if (e.target === modal) {
-            closeModal();
-          }
-        });
-
-        document.addEventListener("keydown", (e) => {
-          if (!modal.classList.contains("hidden")) {
-            if (e.key === "Escape") {
-              closeModal();
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else if (prefersDark) {
+                applyTheme("dark");
+            } else {
+                applyTheme("light");
             }
-            if (e.key === "ArrowLeft") {
-              showPrevImage();
-            }
-            if (e.key === "ArrowRight") {
-              showNextImage();
-            }
-          }
-        });
-      }
 
-      // --- OBSŁUGA INTERAKTYWNEJ MAPY ---
-      const locationCards = document.querySelectorAll(".location-card");
-      const mapFrame = document.getElementById("map-frame");
+            themeToggle.addEventListener("click", toggleTheme);
+            themeToggleMobile.addEventListener("click", toggleTheme);
+        }
 
-      if (locationCards.length > 0 && mapFrame) {
-        locationCards.forEach((card) => {
-          card.addEventListener("click", () => {
-            const mapSrc = card.dataset.mapSrc;
-            if (mapSrc && mapFrame.src !== mapSrc) {
-              mapFrame.src = mapSrc;
-            }
-            // Reset stylów dla wszystkich kart
-            locationCards.forEach((c) => {
-              c.classList.remove(
-                "border-emerald-500",
-                "bg-emerald-50",
-                "dark:bg-emerald-900/30",
-                "dark:border-emerald-500"
-              );
-              c.classList.add(
-                "border-transparent",
-                "hover:bg-gray-50",
-                "dark:bg-gray-800",
-                "dark:hover:bg-gray-700"
-              );
+        // --- OBSŁUGA MENU MOBILNEGO ---
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if(mobileMenuButton && mobileMenu) {
+            const menuIconOpen = document.getElementById("menu-icon-open");
+            const menuIconClose = document.getElementById("menu-icon-close");
+
+            mobileMenuButton.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+                menuIconOpen.classList.toggle("hidden");
+                menuIconClose.classList.toggle("hidden");
             });
-            // Aktywacja klikniętej karty
-            card.classList.add(
-              "border-emerald-500",
-              "bg-emerald-50",
-              "dark:bg-emerald-900/30",
-              "dark:border-emerald-500"
-            );
-            card.classList.remove(
-              "border-transparent",
-              "hover:bg-gray-50",
-              "dark:bg-gray-800",
-              "dark:hover:bg-gray-700"
-            );
-          });
-        });
-      }
 
-      // --- PODŚWIETLANIE AKTYWNEJ SEKCJI W MENU ---
-      const sections = document.querySelectorAll("main section[id]");
-      const navLinks = document.querySelectorAll("header nav a.nav-link");
-
-      const observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.4,
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute("id");
-            navLinks.forEach((link) => {
-              link.classList.remove("active");
-              if (link.getAttribute("href") === `#${id}`) {
-                link.classList.add("active");
-              }
+            const mobileNavLinks = document.querySelectorAll("#mobile-menu a");
+            mobileNavLinks.forEach((link) => {
+                link.addEventListener("click", () => {
+                    mobileMenu.classList.add("hidden");
+                    menuIconOpen.classList.remove("hidden");
+                    menuIconClose.classList.add("hidden");
+                });
             });
-          }
-        });
-      }, observerOptions);
+        }
+        
+        // --- Aktualny rok w stopce ---
+        const currentYearEl = document.getElementById("current-year");
+        if(currentYearEl) {
+            currentYearEl.textContent = new Date().getFullYear();
+        }
 
-      sections.forEach((section) => {
-        observer.observe(section);
-      });
+        // --- OBSŁUGA GALERII (LIGHTBOX) ---
+        const galleryItems = document.querySelectorAll(".gallery-item");
+        const modal = document.getElementById("gallery-modal");
+        if (galleryItems.length > 0 && modal) {
+            const modalImg = document.getElementById("modal-img");
+            const modalClose = document.getElementById("modal-close");
+            const modalPrev = document.getElementById("modal-prev");
+            const modalNext = document.getElementById("modal-next");
+            let currentIndex = 0;
 
-      // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
-      const backToTopButton = document.getElementById("back-to-top");
+            const showImage = (index) => {
+                const imgElement = galleryItems[index].querySelector("img");
+                modalImg.src = imgElement.src;
+                currentIndex = index;
+            };
 
-      if (backToTopButton) {
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 300) {
-            backToTopButton.classList.remove(
-              "opacity-0",
-              "translate-y-4",
-              "pointer-events-none"
-            );
-          } else {
-            backToTopButton.classList.add(
-              "opacity-0",
-              "translate-y-4",
-              "pointer-events-none"
-            );
-          }
-        });
+            galleryItems.forEach((item, index) => {
+                item.addEventListener("click", () => {
+                    showImage(index);
+                    modal.classList.remove("hidden");
+                    document.body.style.overflow = "hidden";
+                });
+            });
 
-        backToTopButton.addEventListener("click", () => {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        });
-      }
+            const closeModal = () => {
+                modal.classList.add("hidden");
+                document.body.style.overflow = "auto";
+            };
+            const showPrevImage = () => showImage((currentIndex - 1 + galleryItems.length) % galleryItems.length);
+            const showNextImage = () => showImage((currentIndex + 1) % galleryItems.length);
+
+            modalClose.addEventListener("click", closeModal);
+            modalPrev.addEventListener("click", showPrevImage);
+            modalNext.addEventListener("click", showNextImage);
+            modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
+
+            document.addEventListener("keydown", (e) => {
+                if (!modal.classList.contains("hidden")) {
+                    if (e.key === "Escape") closeModal();
+                    if (e.key === "ArrowLeft") showPrevImage();
+                    if (e.key === "ArrowRight") showNextImage();
+                }
+            });
+        }
+
+        // --- OBSŁUGA INTERAKTYWNEJ MAPY ---
+        const locationCards = document.querySelectorAll(".location-card");
+        const mapFrame = document.getElementById("map-frame");
+        if (locationCards.length > 0 && mapFrame) {
+            locationCards.forEach((card) => {
+                card.addEventListener("click", () => {
+                    const mapSrc = card.dataset.mapSrc;
+                    if (mapSrc && mapFrame.src !== mapSrc) {
+                        mapFrame.src = mapSrc;
+                    }
+                    locationCards.forEach(c => {
+                        c.classList.remove("border-emerald-500", "bg-emerald-50", "dark:bg-emerald-900/30", "dark:border-emerald-500");
+                        c.classList.add("border-transparent", "hover:bg-gray-50", "dark:bg-gray-800", "dark:hover:bg-gray-700");
+                    });
+                    card.classList.add("border-emerald-500", "bg-emerald-50", "dark:bg-emerald-900/30", "dark:border-emerald-500");
+                    card.classList.remove("border-transparent", "hover:bg-gray-50", "dark:bg-gray-800", "dark:hover:bg-gray-700");
+                });
+            });
+        }
+
+        // --- PODŚWIETLANIE AKTYWNEJ SEKCJI W MENU ---
+        const sections = document.querySelectorAll("main section[id]");
+        const navLinks = document.querySelectorAll("header nav a.nav-link");
+        if(sections.length > 0 && navLinks.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute("id");
+                        navLinks.forEach((link) => {
+                            link.classList.remove("active");
+                            if (link.getAttribute("href") === `#${id}`) {
+                                link.classList.add("active");
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: "0px", threshold: 0.4 });
+            sections.forEach(section => observer.observe(section));
+        }
+        
+        // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
+        const backToTopButton = document.getElementById("back-to-top");
+        if (backToTopButton) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+                } else {
+                    backToTopButton.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+                }
+            });
+            backToTopButton.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        }
+    });
     </script>
   </body>
 </html>
