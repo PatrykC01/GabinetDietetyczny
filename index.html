@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tytuł strony - ważny dla SEO -->
     <title>
       Klaudia Waśkiewicz - Dietetyk Kliniczny | Czechowice-Dziedzice &
       Mazańcowice
     </title>
 
-    <!-- Opis strony - ważny dla SEO -->
     <meta
       name="description"
       content="Klaudia Waśkiewicz, dietetyk kliniczny. Indywidualne plany żywieniowe i wsparcie w chorobach metabolicznych, problemach z tarczycą i jelitami. Umów wizytę."
@@ -20,7 +18,7 @@
       content="dietetyk, dietetyk kliniczny, czechowice-dziedzice, mazańcowice, psychodietetyka, plany żywieniowe, odchudzanie, zdrowe odżywianie, hashimoto, insulinooporność"
     />
 
-    <!-- Czcionka Inter z Google Fonts -->
+    <link href="dist/output.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +32,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     </noscript>
 
-  
+ 
     <style>
       body {
         font-family: "Inter", sans-serif;
@@ -77,7 +75,6 @@
   </head>
 
   <body class="text-gray-800 dark:text-gray-300">
-    <!-- === HEADER I NAWIGACJA === -->
     <header
       id="header"
       class="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md sticky top-0 z-50 shadow-sm"
@@ -128,36 +125,22 @@
               class="ml-4 inline-block bg-emerald-600 text-white font-semibold py-2 px-5 rounded-lg shadow-sm hover:bg-emerald-600 transition-all duration-300 transform hover:scale-105"
               >Kontakt</a
             >
-            <!-- Przełącznik trybu ciemnego - DESKTOP -->
             <button
               id="theme-toggle"
               class="ml-4 p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              <i data-lucide="sun" id="theme-icon-light" class="w-5 h-5"></i>
-              <i
-                data-lucide="moon"
-                id="theme-icon-dark"
-                class="w-5 h-5 hidden"
-              ></i>
+              <svg id="theme-icon-light" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              <svg id="theme-icon-dark" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
               <span class="sr-only">Przełącz motyw</span>
             </button>
           </nav>
           <div class="md:hidden flex items-center gap-2">
-            <!-- Przełącznik trybu ciemnego - MOBILE -->
             <button
               id="theme-toggle-mobile"
               class="p-2 rounded-full text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
-              <i
-                data-lucide="sun"
-                id="theme-icon-light-mobile"
-                class="w-5 h-5"
-              ></i>
-              <i
-                data-lucide="moon"
-                id="theme-icon-dark-mobile"
-                class="w-5 h-5 hidden"
-              ></i>
+              <svg id="theme-icon-light-mobile" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              <svg id="theme-icon-dark-mobile" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
               <span class="sr-only">Przełącz motyw</span>
             </button>
             <button
@@ -165,13 +148,12 @@
               class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-600 focus:outline-none"
             >
               <span class="sr-only">Otwórz menu</span>
-              <i data-lucide="menu" id="menu-icon-open"></i>
-              <i data-lucide="x" id="menu-icon-close" class="hidden"></i>
+              <svg id="menu-icon-open" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+              <svg id="menu-icon-close" class="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
           </div>
         </div>
       </div>
-      <!-- Menu mobilne -->
       <div id="mobile-menu" class="md:hidden hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <a
@@ -214,7 +196,6 @@
     </header>
 
     <main>
-      <!-- === SEKCJA HERO === -->
       <section
         id="home"
         class="relative bg-white dark:bg-gray-900 pt-16 pb-20 lg:pt-24 lg:pb-28"
@@ -251,7 +232,6 @@
               </div>
             </div>
             <div class="lg:w-1/2 mt-10 lg:mt-0">
-              <!-- Zoptymalizowany obraz Hero -->
               <picture>
                   <source 
                       media="(max-width: 640px)" 
@@ -276,12 +256,10 @@
         </div>
       </section>
 
-      <!-- === SEKCJA O MNIE === -->
       <section id="about" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
             <div class="md:w-1/3 flex justify-center">
-              <!-- Zoptymalizowany obraz portretowy -->
               <img
                 src="Images/portraitphoto.webp"
                 alt="Profesjonalny portret dietetyczki Klaudii Waśkiewicz."
@@ -326,7 +304,6 @@
         </div>
       </section>
 
-      <!-- === SEKCJA OFERTA === -->
       <section id="offer" class="py-20 lg:py-28 bg-gray-50 dark:bg-gray-950">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -347,17 +324,13 @@
           <div
             class="mt-16 grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           >
-            <!-- Karta 1 -->
             <div
               class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-600 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
               >
-                <i
-                  data-lucide="heart-pulse"
-                  class="text-emerald-600 dark:text-emerald-600 w-8 h-8"
-                ></i>
+                <svg class="text-emerald-600 dark:text-emerald-600 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/><path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Choroby cywilizacyjne
@@ -367,17 +340,13 @@
                 nadciśnienie, miażdżyca, dyslipidemia i dna moczanowa.
               </p>
             </div>
-            <!-- Karta 2 -->
             <div
               class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-600 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
               >
-                <i
-                  data-lucide="shield-check"
-                  class="text-emerald-600 dark:text-emerald-600 w-8 h-8"
-                ></i>
+                <svg class="text-emerald-600 dark:text-emerald-600 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Zaburzenia hormonalne
@@ -387,17 +356,13 @@
                 tym w chorobie Hashimoto.
               </p>
             </div>
-            <!-- Karta 3 -->
             <div
               class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-600 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
               >
-                <i
-                  data-lucide="beaker"
-                  class="text-emerald-600 dark:text-emerald-600 w-8 h-8"
-                ></i>
+                <svg class="text-emerald-600 dark:text-emerald-600 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 3h15"/><path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/><path d="M6 14h12"/></svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Problemy jelitowe
@@ -407,17 +372,13 @@
                 m.in. SIBO, IBS.
               </p>
             </div>
-            <!-- Karta 4 -->
             <div
               class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-600 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
               >
-                <i
-                  data-lucide="ribbon"
-                  class="text-emerald-600 dark:text-emerald-600 w-8 h-8"
-                ></i>
+                <svg class="text-emerald-600 dark:text-emerald-600 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 11.22C11 9.997 10 9 10 8a2 2 0 0 1 4 0c0 1-.998 2.002-2.01 3.22"/><path d="m12 18 2.57-3.5"/><path d="M6.243 9.016a7 7 0 0 1 11.507-.009"/><path d="M9.35 14.53 12 11.22"/><path d="M9.35 14.53C7.728 12.246 6 10.221 6 7a6 5 0 0 1 12 0c-.005 3.22-1.778 5.235-3.43 7.5l3.557 4.527a1 1 0 0 1-.203 1.43l-1.894 1.36a1 1 0 0 1-1.384-.215L12 18l-2.679 3.593a1 1 0 0 1-1.39.213l-1.865-1.353a1 1 0 0 1-.203-1.422z"/></svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Choroby onkologiczne
@@ -427,17 +388,13 @@
                 po leczeniu onkologicznym.
               </p>
             </div>
-            <!-- Karta 5 -->
             <div
               class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-600 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
               >
-                <i
-                  data-lucide="baby"
-                  class="text-emerald-600 dark:text-emerald-600 w-8 h-8"
-                ></i>
+                <svg class="text-emerald-600 dark:text-emerald-600 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M15 12h.01"/><path d="M19.38 6.813A9 9 0 0 1 20.8 10.2a2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/><path d="M9 12h.01"/></svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Płodność i ciąża
@@ -447,17 +404,13 @@
                 trakcie oraz po porodzie.
               </p>
             </div>
-            <!-- Karta 6 -->
             <div
               class="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-lg hover:shadow-xl dark:border dark:border-gray-800 dark:hover:border-emerald-600 transition-all duration-300 flex flex-col items-center text-center"
             >
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-4 rounded-full mb-6"
               >
-                <i
-                  data-lucide="smile"
-                  class="text-emerald-600 dark:text-emerald-600 w-8 h-8"
-                ></i>
+                <svg class="text-emerald-600 dark:text-emerald-600 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></svg>
               </div>
               <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 Psychodietetyka pediatryczna
@@ -471,7 +424,6 @@
         </div>
       </section>
 
-      <!-- === SEKCJA CENNIK === -->
       <section id="pricing" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -568,7 +520,6 @@
         </div>
       </section>
 
-      <!-- === SEKCJA GALERIA === -->
       <section id="gallery" class="py-20 lg:py-28 bg-gray-50 dark:bg-gray-950">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -587,7 +538,6 @@
           <div
             class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            <!-- Zdjęcie 1 -->
             <div
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
@@ -602,7 +552,6 @@
                 decoding="async"
               />
             </div>
-            <!-- Zdjęcie 2 -->
             <div
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
@@ -617,7 +566,6 @@
                 decoding="async"
               />
             </div>
-            <!-- Zdjęcie 3 -->
             <div
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
@@ -632,7 +580,6 @@
                 decoding="async"
               />
             </div>
-            <!-- Zdjęcie 4 -->
             <div
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
@@ -647,7 +594,6 @@
                 decoding="async"
               />
             </div>
-            <!-- Zdjęcie 5 -->
             <div
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
@@ -667,7 +613,6 @@
                 decoding="async"
               />
             </div>
-            <!-- Zdjęcie 6 -->
             <div
               class="group gallery-item cursor-pointer block rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
             >
@@ -685,7 +630,6 @@
         </div>
       </section>
 
-      <!-- === SEKCJA JAK SIĘ PRZYGOTOWAĆ === -->
       <section id="prepare" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -714,10 +658,7 @@
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
               >
-                <i
-                  data-lucide="clipboard-list"
-                  class="w-6 h-6 text-emerald-600 dark:text-emerald-600"
-                ></i>
+                <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -737,10 +678,7 @@
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
               >
-                <i
-                  data-lucide="pill"
-                  class="w-6 h-6 text-emerald-600 dark:text-emerald-600"
-                ></i>
+                <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -760,10 +698,7 @@
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
               >
-                <i
-                  data-lucide="book-open"
-                  class="w-6 h-6 text-emerald-600 dark:text-emerald-600"
-                ></i>
+                <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -780,10 +715,7 @@
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
               >
-                <i
-                  data-lucide="goal"
-                  class="w-6 h-6 text-emerald-600 dark:text-emerald-600"
-                ></i>
+                <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 13V2l8 4-8 4"/><path d="M20.561 10.222a9 9 0 1 1-12.55-5.29"/><path d="M8.002 9.997a5 5 0 1 0 8.9 2.02"/></svg>
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -800,10 +732,7 @@
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
               >
-                <i
-                  data-lucide="shirt"
-                  class="w-6 h-6 text-emerald-600 dark:text-emerald-600"
-                ></i>
+                <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -819,10 +748,7 @@
               <div
                 class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full flex-shrink-0 mt-1"
               >
-                <i
-                  data-lucide="message-circle"
-                  class="w-6 h-6 text-emerald-600 dark:text-emerald-600"
-                ></i>
+                <svg class="w-6 h-6 text-emerald-600 dark:text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/></svg>
               </div>
               <div>
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -838,7 +764,6 @@
         </div>
       </section>
 
-      <!-- === SEKCJA GDZIE PRZYJMUJĘ === -->
       <section id="location" class="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -856,7 +781,6 @@
           </div>
           <div class="mt-16 max-w-5xl mx-auto">
             <div class="grid md:grid-cols-2 gap-8">
-              <!-- Lokalizacja 1 -->
               <div
                 id="location-0"
                 class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 dark:border-emerald-600"
@@ -866,10 +790,7 @@
                   <div
                     class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
-                    <i
-                      data-lucide="map-pin"
-                      class="text-emerald-600 dark:text-emerald-600 w-6 h-6"
-                    ></i>
+                    <svg class="text-emerald-600 dark:text-emerald-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
                   </div>
                   <div>
                     <h3 class="text-xl font-bold text-gray-800 dark:text-white">
@@ -884,10 +805,7 @@
                   <div
                     class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
-                    <i
-                      data-lucide="phone"
-                      class="text-emerald-600 dark:text-emerald-600 w-6 h-6"
-                    ></i>
+                    <svg class="text-emerald-600 dark:text-emerald-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
                   </div>
                   <div>
                     <h3 class="text-xl font-bold text-gray-800 dark:text-white">
@@ -913,7 +831,6 @@
                 </div>
               </div>
 
-              <!-- Lokalizacja 2 -->
               <div
                 id="location-1"
                 class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-transparent hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700"
@@ -923,10 +840,7 @@
                   <div
                     class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
-                    <i
-                      data-lucide="map-pin"
-                      class="text-emerald-600 dark:text-emerald-600 w-6 h-6"
-                    ></i>
+                    <svg class="text-emerald-600 dark:text-emerald-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
                   </div>
                   <div>
                     <h3 class="text-xl font-bold text-gray-800 dark:text-white">
@@ -941,10 +855,7 @@
                   <div
                     class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full mt-1 flex-shrink-0"
                   >
-                    <i
-                      data-lucide="phone"
-                      class="text-emerald-600 dark:text-emerald-600 w-6 h-6"
-                    ></i>
+                    <svg class="text-emerald-600 dark:text-emerald-600 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>
                   </div>
                   <div>
                     <h3 class="text-xl font-bold text-gray-800 dark:text-white">
@@ -970,7 +881,6 @@
                 </div>
               </div>
             </div>
-            <!-- Map Container -->
             <div class="mt-10 rounded-2xl overflow-hidden shadow-lg h-96">
               <iframe
                 id="map-frame"
@@ -988,7 +898,6 @@
         </div>
       </section>
 
-      <!-- === SEKCJA KONTAKT === -->
       <section id="contact" class="py-20 lg:py-28 bg-gray-50 dark:bg-gray-950">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center">
@@ -1058,7 +967,6 @@
         </div>
       </section>
     </main>
-    <!-- === MODAL GALERII (LIGHTBOX) === -->
     <div
       id="gallery-modal"
       class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 hidden p-4 transition-opacity duration-300"
@@ -1066,16 +974,14 @@
       <div
         class="relative max-w-4xl max-h-full w-full flex items-center justify-center"
       >
-        <!-- Przycisk Poprzedni -->
         <button
           id="modal-prev"
           class="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50 transition-colors ml-2 md:ml-4"
         >
-          <i data-lucide="chevron-left" class="w-8 h-8"></i>
+          <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
           <span class="sr-only">Poprzednie zdjęcie</span>
         </button>
 
-        <!-- Wrapper for image and close button -->
         <div class="relative">
           <img
             id="modal-img"
@@ -1087,48 +993,40 @@
             id="modal-close"
             class="absolute top-2 right-2 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-75 transition-colors z-20"
           >
-            <i data-lucide="x" class="w-8 h-8"></i>
+            <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             <span class="sr-only">Zamknij</span>
           </button>
         </div>
 
-        <!-- Przycisk Następny -->
         <button
           id="modal-next"
           class="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-white bg-black bg-opacity-30 rounded-full p-2 hover:bg-opacity-50 transition-colors mr-2 md:mr-4"
         >
-          <i data-lucide="chevron-right" class="w-8 h-8"></i>
+          <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           <span class="sr-only">Następne zdjęcie</span>
         </button>
       </div>
     </div>
 
-    <!-- === PRZYCISK POWROTU DO GÓRY === -->
     <button
       id="back-to-top"
       class="fixed bottom-5 right-5 z-50 p-3 rounded-full bg-emerald-600 text-white shadow-lg hover:bg-emerald-600 transition-all duration-300 opacity-0 translate-y-4 pointer-events-none"
       aria-label="Wróć na górę strony"
     >
-      <i data-lucide="arrow-up" class="w-6 h-6"></i>
+      <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
     </button>
 
-    <!-- === FOOTER === -->
     <footer class="bg-gray-800 dark:bg-black text-white dark:text-gray-400">
       <div class="container mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center">
         <p>
-          &copy; <span id="current-year"></span> Klaudia Waśkiewicz Dietetyk
+          © <span id="current-year"></span> Klaudia Waśkiewicz Dietetyk
           Kliniczny. Wszelkie prawa zastrzeżone.
         </p>
       </div>
     </footer>
 
- <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Ikony Lucide -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-     <script>
+    <script>
       // Konfiguracja Tailwind CSS dla trybu ciemnego opartego na klasie
       tailwind.config = {
         darkMode: "class",
@@ -1138,12 +1036,6 @@
     <script>
     // Cały kod JS opakowany w DOMContentLoaded, aby upewnić się, że strona jest gotowa
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Inicjalizacja ikon Lucide ---
-        // Upewniamy się, że obiekt 'lucide' jest dostępny
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-
         // --- OBSŁUGA TRYBU CIEMNEGO ---
         const themeToggle = document.getElementById("theme-toggle");
         const themeToggleMobile = document.getElementById("theme-toggle-mobile");
