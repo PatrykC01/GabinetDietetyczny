@@ -1,0 +1,6 @@
+# Pozwól wszystkim robotom na dostęp do całej strony
+User-agent: *
+Disallow:
+
+# Wskaż lokalizację mapy witryny
+Sitemap: https://dietetykczechowice.pl/sitemap.xml
