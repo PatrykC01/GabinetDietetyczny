@@ -1238,11 +1238,6 @@
               id="contact-form"
               class="space-y-6"
             >
-              <input
-                type="hidden"
-                name="_next"
-                value="https://dietetykczechowice.pl/#contact?status=success"
-              />
               <div>
                 <label for="name" class="sr-only">Imię i nazwisko</label>
                 <input
@@ -1277,6 +1272,12 @@
                   class="block w-full px-4 py-3 rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:ring-emerald-600 focus:border-emerald-600 placeholder-gray-500 dark:placeholder-gray-400"
                   placeholder="Twoja wiadomość..."
                 ></textarea>
+              </div>
+              <div class="flex justify-center mb-4">
+              <div
+                class="g-recaptcha"
+                data-sitekey="6LflNeArAAAAAD14qJP3AWoV3_UNDttxlCGobh3V"
+              ></div>
               </div>
               <div>
                 <button
@@ -1395,7 +1396,7 @@
         </p>
       </div>
     </footer>
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
       // Cały kod JS opakowany w DOMContentLoaded, aby upewnić się, że strona jest gotowa
       document.addEventListener("DOMContentLoaded", () => {
@@ -1605,39 +1606,57 @@
           sections.forEach((section) => observer.observe(section));
         }
 
-        // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
-        const backToTopButton = document.getElementById("back-to-top");
-        if (backToTopButton) {
-          window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-              backToTopButton.classList.remove(
-                "opacity-0",
-                "translate-y-4",
-                "pointer-events-none"
-              );
-            } else {
-              backToTopButton.classList.add(
-                "opacity-0",
-                "translate-y-4",
-                "pointer-events-none"
-              );
-            }
-          });
-          backToTopButton.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          });
-        }
-        // --- OBSŁUGA FORMULARZA PO PRZEKIEROWANIU ---
+        // --- OBSŁUGA FORMULARZA KONTAKTOWEGO ZA POMOCĄ AJAX ---
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
 
         if (contactForm && formStatus) {
-          const urlParams = new URLSearchParams(window.location.search);
-          if (urlParams.get("status") === "success") {
-            formStatus.textContent = "Dziękuję za wiadomość! Odpowiem wkrótce.";
-            formStatus.className = "mt-4 text-center text-emerald-600";
-            contactForm.reset(); // Czyszczenie formularza!
-          }
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // ZATRZYMUJEMY domyślną wysyłkę i przeładowanie strony
+
+            const formData = new FormData(this);
+            const formAction = this.action;
+
+            // Pokazujemy użytkownikowi, że coś się dzieje
+            formStatus.textContent = "Wysyłanie...";
+            formStatus.className = "mt-4 text-center text-gray-500";
+
+            fetch(formAction, {
+              method: "POST",
+              body: formData,
+              headers: {
+                Accept: "application/json",
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  // SUKCES! Formspree poprawnie przetworzyło dane
+                  formStatus.textContent =
+                    "Dziękuję za wiadomość! Odpowiem wkrótce.";
+                  formStatus.className = "mt-4 text-center text-emerald-600";
+                  contactForm.reset(); // Czyszczenie formularza!
+                } else {
+                  // BŁĄD: Formspree zwróciło błąd (np. błąd walidacji)
+                  response.json().then((data) => {
+                    if (Object.hasOwn(data, "errors")) {
+                      formStatus.textContent = data["errors"]
+                        .map((error) => error["message"])
+                        .join(", ");
+                    } else {
+                      formStatus.textContent =
+                        "Wystąpił błąd podczas wysyłania formularza. Spróbuj ponownie.";
+                    }
+                    formStatus.className = "mt-4 text-center text-red-600";
+                  });
+                }
+              })
+              .catch((error) => {
+                // BŁĄD SIECIOWY: Nie udało się połączyć z serwerem
+                formStatus.textContent =
+                  "Wystąpił błąd sieci. Sprawdź połączenie i spróbuj ponownie.";
+                formStatus.className = "mt-4 text-center text-red-600";
+              });
+          });
         }
       });
     </script>
