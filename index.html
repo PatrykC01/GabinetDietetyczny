@@ -1231,6 +1231,7 @@
           </div>
           <div class="mt-16 max-w-lg mx-auto">
             <form
+              id="contact-form"
               action="https://formspree.io/f/xrbypdpl"
               method="POST"
               class="space-y-6"
@@ -1279,6 +1280,7 @@
                 </button>
               </div>
             </form>
+            <p id="form-status" class="mt-4 text-center"></p>
           </div>
         </div>
       </section>
@@ -1618,7 +1620,49 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
           });
         }
-      });
+      // --- OBSŁUGA FORMULARZA KONTAKTOWEGO (AJAX) ---
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault(); // Zatrzymujemy domyślną wysyłkę formularza
+            const form = e.target;
+            const data = new FormData(form);
+
+            formStatus.textContent = "Wysyłanie...";
+            formStatus.className =
+              "mt-4 text-center text-gray-600 dark:text-gray-400";
+
+            try {
+              const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+
+              if (response.ok) {
+                formStatus.textContent =
+                  "Dziękuję za wiadomość! Odpowiem wkrótce.";
+                formStatus.className = "mt-4 text-center text-emerald-600";
+                form.reset(); // KLUCZOWA LINIA: Czyszczenie formularza po sukcesie!
+              } else {
+                // Jeśli Formspree zwróci błąd walidacji itp.
+                formStatus.textContent =
+                  "Ups! Wystąpił błąd podczas wysyłania. Spróbuj ponownie.";
+                formStatus.className = "mt-4 text-center text-red-600";
+              }
+            } catch (error) {
+              // Błąd sieciowy
+              formStatus.textContent =
+                "Ups! Wystąpił błąd sieci. Sprawdź połączenie i spróbuj ponownie.";
+              formStatus.className = "mt-4 text-center text-red-600";
+            }
+          });
+        }
+      }); // To jest zamknięcie Twojego istniejącego eventu DOMContentLoaded
     </script>
   </body>
 </html>
