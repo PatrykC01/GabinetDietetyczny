@@ -1605,6 +1605,28 @@
           sections.forEach((section) => observer.observe(section));
         }
 
+        // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
+const backToTopButton = document.getElementById("back-to-top");
+if (backToTopButton) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.remove(
+        "opacity-0",
+        "translate-y-4",
+        "pointer-events-none"
+      );
+    } else {
+      backToTopButton.classList.add(
+        "opacity-0",
+        "translate-y-4",
+        "pointer-events-none"
+      );
+    }
+  });
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
         // --- OBSŁUGA FORMULARZA Z OPÓŹNIONYM ŁADOWANIEM RECAPTCHA ---
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
