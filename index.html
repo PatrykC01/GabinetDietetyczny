@@ -1274,10 +1274,10 @@
                 ></textarea>
               </div>
               <div class="flex justify-center mb-4">
-              <div
-                class="g-recaptcha"
-                data-sitekey="6LflNeArAAAAAD14qJP3AWoV3_UNDttxlCGobh3V"
-              ></div>
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="6LflNeArAAAAAD14qJP3AWoV3_UNDttxlCGobh3V"
+                ></div>
               </div>
               <div>
                 <button
@@ -1396,7 +1396,6 @@
         </p>
       </div>
     </footer>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
       // Cały kod JS opakowany w DOMContentLoaded, aby upewnić się, że strona jest gotowa
       document.addEventListener("DOMContentLoaded", () => {
@@ -1606,11 +1605,38 @@
           sections.forEach((section) => observer.observe(section));
         }
 
-        // --- OBSŁUGA FORMULARZA KONTAKTOWEGO ZA POMOCĄ AJAX ---
+        // --- OBSŁUGA FORMULARZA Z OPÓŹNIONYM ŁADOWANIEM RECAPTCHA ---
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
+        let recaptchaLoaded = false; // Flaga, aby skrypt ładował się tylko raz
+
+        function loadRecaptchaScript() {
+          // Sprawdzamy, czy skrypt nie został już załadowany
+          if (recaptchaLoaded) {
+            return;
+          }
+          recaptchaLoaded = true; // Ustawiamy flagę
+
+          // Tworzymy element <script>
+          const script = document.createElement("script");
+          script.src = "https://www.google.com/recaptcha/api.js";
+          script.async = true;
+          script.defer = true;
+
+          // Dodajemy skrypt do <head> dokumentu, co rozpocznie jego pobieranie
+          document.head.appendChild(script);
+        }
 
         if (contactForm && formStatus) {
+          // Znajdujemy wszystkie pola do wpisywania danych w formularzu
+          const formInputs = contactForm.querySelectorAll("input, textarea");
+
+          // Dodajemy nasłuchiwanie na PIERWSZĄ interakcję (kliknięcie w pole)
+          formInputs.forEach((input) => {
+            input.addEventListener("focus", loadRecaptchaScript, {
+              once: true,
+            });
+          });
           contactForm.addEventListener("submit", function (e) {
             e.preventDefault(); // ZATRZYMUJEMY domyślną wysyłkę i przeładowanie strony
 
