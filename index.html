@@ -1663,6 +1663,14 @@ if (backToTopButton) {
           contactForm.addEventListener("submit", function (e) {
             e.preventDefault(); // ZATRZYMUJEMY domyślną wysyłkę i przeładowanie strony
 
+              const recaptchaResponse = grecaptcha.getResponse();
+  if (recaptchaResponse === "") {
+    // Jeśli odpowiedź jest pusta, to znaczy, że captcha nie została zaznaczona
+    formStatus.textContent = "Proszę zaznaczyć pole reCAPTCHA.";
+    formStatus.className = "mt-4 text-center text-red-600"; // Używamy czerwonego koloru dla błędu
+    return; // PRZERYWAMY działanie funkcji, formularz nie zostanie wysłany
+  }
+            
             const formData = new FormData(this);
             const formAction = this.action;
 
