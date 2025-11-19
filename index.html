@@ -21,7 +21,7 @@
       content="s2ayZOq_7cJIuKMB4W3RIg5G2A34Sv446F4BlMwkneY"
     />
     <link rel="canonical" href="https://www.dietetykczechowice.pl/" />
-    
+
     <link href="dist/output.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -354,7 +354,7 @@
                   height="800"
                   decoding="async"
                   fetchpriority="high"
-                  style="aspect-ratio: 1200 / 800;"
+                  style="aspect-ratio: 1200 / 800"
                 />
               </picture>
             </div>
@@ -498,8 +498,8 @@
                 Zaburzenia hormonalne
               </h3>
               <p class="text-gray-600 dark:text-gray-400 flex-grow">
-                Pomoc w insulinooporności oraz zaburzeniach pracy&nbsp;tarczycy, w
-                tym w chorobie Hashimoto.
+                Pomoc w insulinooporności oraz zaburzeniach pracy&nbsp;tarczycy,
+                w tym w chorobie Hashimoto.
               </p>
             </div>
             <div
@@ -1049,7 +1049,7 @@
             <div class="grid md:grid-cols-2 gap-8">
               <div
                 id="location-0"
-                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 dark:border-emerald-600"
+                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 flex flex-col justify-center min-h-[220px] border-2 border-emerald-600 bg-emerald-50 dark:bg-emerald-900/30 dark:border-emerald-600"
                 data-map-src="https://www.google.com/maps/embed?origin=mfe&pb=!1m12!1m8!1m3!1d2569.7715884789213!2d19.01278!3d49.90309!3m2!1i1024!2i768!4f13.1!2m1!1s49.90309,19.01278!6i17"
               >
                 <div class="flex items-start gap-4 mb-6">
@@ -1126,7 +1126,7 @@
 
               <div
                 id="location-1"
-                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 border-2 border-transparent hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700"
+                class="location-card cursor-pointer p-6 rounded-2xl shadow-lg transition-all duration-300 flex flex-col justify-center min-h-[220px] border-2 border-transparent hover:bg-gray-50 dark:hover:bg-gray-700"
                 data-map-src="https://maps.google.com/maps?q=49.85530706226528,18.981599611207642&z=16&output=embed"
               >
                 <div class="flex items-start gap-4 mb-6">
@@ -1198,6 +1198,16 @@
                       >
                     </p>
                   </div>
+                </div>
+                <div class="mt-6 text-center">
+                  <a
+                    href="https://booksy.com/pl-pl/dl/show-business/276046"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Umów wizytę online w Centrum Medycznym MEDEA przez Booksy – link otwiera się w nowej karcie"
+                    class="inline-block w-full sm:w-auto bg-emerald-600 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:bg-emerald-700 transition-all duration-300 transform hover:scale-105"
+                    >Umów wizytę online (Booksy)</a
+                  >
                 </div>
               </div>
             </div>
@@ -1608,27 +1618,27 @@
         }
 
         // --- OBSŁUGA PRZYCISKU POWROTU DO GÓRY ---
-const backToTopButton = document.getElementById("back-to-top");
-if (backToTopButton) {
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTopButton.classList.remove(
-        "opacity-0",
-        "translate-y-4",
-        "pointer-events-none"
-      );
-    } else {
-      backToTopButton.classList.add(
-        "opacity-0",
-        "translate-y-4",
-        "pointer-events-none"
-      );
-    }
-  });
-  backToTopButton.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
+        const backToTopButton = document.getElementById("back-to-top");
+        if (backToTopButton) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+              backToTopButton.classList.remove(
+                "opacity-0",
+                "translate-y-4",
+                "pointer-events-none"
+              );
+            } else {
+              backToTopButton.classList.add(
+                "opacity-0",
+                "translate-y-4",
+                "pointer-events-none"
+              );
+            }
+          });
+          backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
         // --- OBSŁUGA FORMULARZA Z OPÓŹNIONYM ŁADOWANIEM RECAPTCHA ---
         const contactForm = document.getElementById("contact-form");
         const formStatus = document.getElementById("form-status");
@@ -1664,14 +1674,14 @@ if (backToTopButton) {
           contactForm.addEventListener("submit", function (e) {
             e.preventDefault(); // ZATRZYMUJEMY domyślną wysyłkę i przeładowanie strony
 
-              const recaptchaResponse = grecaptcha.getResponse();
-  if (recaptchaResponse === "") {
-    // Jeśli odpowiedź jest pusta, to znaczy, że captcha nie została zaznaczona
-    formStatus.textContent = "Proszę zaznaczyć pole reCAPTCHA.";
-    formStatus.className = "mt-4 text-center text-red-600"; // Używamy czerwonego koloru dla błędu
-    return; // PRZERYWAMY działanie funkcji, formularz nie zostanie wysłany
-  }
-            
+            const recaptchaResponse = grecaptcha.getResponse();
+            if (recaptchaResponse === "") {
+              // Jeśli odpowiedź jest pusta, to znaczy, że captcha nie została zaznaczona
+              formStatus.textContent = "Proszę zaznaczyć pole reCAPTCHA.";
+              formStatus.className = "mt-4 text-center text-red-600"; // Używamy czerwonego koloru dla błędu
+              return; // PRZERYWAMY działanie funkcji, formularz nie zostanie wysłany
+            }
+
             const formData = new FormData(this);
             const formAction = this.action;
 
